@@ -1,0 +1,746 @@
+
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" dir="ltr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Localtonet | Localhost to Internet</title>
+    <link rel="icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Localtonet secure introspectable tunnels to localhost web development and local gaming" />
+    <meta name="keywords" content="proxy, localhost, expose localhost, reverse proxy, port share, local share, open to world, local to world, port forwarding, tunnel, tunneling, development, software, dev, dev server" />
+    <meta name="website" content="https://localtonet.com/" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="shopinext-verification" content="fbwqb54agb4blogrh199owuglsv3neee">
+
+    <link rel="shortcut icon" href="/homepage/images/favicon.ico" />
+    <link href="/homepage/libs/tiny-slider/tiny-slider.css" rel="stylesheet">
+    <link href="/homepage/libs/%40iconscout/unicons/css/line.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="/homepage/css/icons.css" />
+    <link rel="stylesheet" href="/homepage/css/tailwind.min.css" />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XMRM9PZYN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-2XMRM9PZYN');
+    </script>
+</head>
+
+<body class="font-nunito text-base text-black dark:text-white dark:bg-slate-900">
+    <script>
+        var defaultThemeMode = "light";
+        var themeMode;
+        if (document.documentElement) {
+            if (localStorage.getItem("data-theme") !== null) {
+                themeMode = localStorage.getItem("data-theme");
+            }
+            else {
+                themeMode = defaultThemeMode;
+            }
+            document.documentElement.setAttribute("class", themeMode);
+        }
+    </script>
+    
+    <style>
+    .wrap {
+        font-size: 35px;
+    }
+
+    .noHover {
+        pointer-events: none;
+    }
+</style>
+
+
+<!-- Start -->
+<section class="relative md:py-24 py-16">
+    <div class="container">
+        <div class="grid grid-cols-1 pb-0 text-center">
+            <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold">Features</h3>
+        </div><!--end grid-->
+
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 mt-8 gap-[30px]">
+            <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center noHover">
+                <div class="relative overflow-hidden text-transparent -m-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-hexagon h-24 w-24 fill-indigo-600/5 group-hover:fill-white/10 mx-auto"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                    <div class="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-indigo-600 rounded-xl group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                        <i class="uil uil-server"></i>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <a href="#" class="text-lg font-medium group-hover:text-white transition-all duration-500 ease-in-out">Any Protocol</a>
+                    <p class="text-slate-400 group-hover:text-white/50 transition-all duration-500 ease-in-out mt-3">Supports HTTP, UDP, TLS, and any TCP based protocol.</p>
+                </div>
+            </div><!--end feature-->
+
+            <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center noHover">
+                <div class="relative overflow-hidden text-transparent -m-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-hexagon h-24 w-24 fill-indigo-600/5 group-hover:fill-white/10 mx-auto"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                    <div class="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-indigo-600 rounded-xl group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                        <i class="uil uil-processor
+"></i>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <a href="#" class="text-lg font-medium group-hover:text-white transition-all duration-500 ease-in-out">Runs Everywhere</a>
+                    <p class="text-slate-400 group-hover:text-white/50 transition-all duration-500 ease-in-out mt-3">One executable, no dependencies. Any OS, any CPU architecture.</p>
+                </div>
+            </div><!--end feature-->
+
+            <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center noHover">
+                <div class="relative overflow-hidden text-transparent -m-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-hexagon h-24 w-24 fill-indigo-600/5 group-hover:fill-white/10 mx-auto"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                    <div class="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-indigo-600 rounded-xl group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                        <i class="uil uil-lock-access"></i>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <a href="#" class="text-lg font-medium group-hover:text-white transition-all duration-500 ease-in-out">IP Whitelisting</a>
+                    <p class="text-slate-400 group-hover:text-white/50 transition-all duration-500 ease-in-out mt-3">Allow or block access to specific IP addresses.</p>
+                </div>
+            </div><!--end feature-->
+
+            <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center noHover">
+                <div class="relative overflow-hidden text-transparent -m-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-hexagon h-24 w-24 fill-indigo-600/5 group-hover:fill-white/10 mx-auto"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                    <div class="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-indigo-600 rounded-xl group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                        <i class="uil uil-rocket"></i>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <a href="#" class="text-lg font-medium group-hover:text-white transition-all duration-500 ease-in-out">Instant domains</a>
+                    <p class="text-slate-400 group-hover:text-white/50 transition-all duration-500 ease-in-out mt-3">Select your own custom domain or subdomin</p>
+                </div>
+            </div><!--end feature-->
+
+            <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center noHover">
+                <div class="relative overflow-hidden text-transparent -m-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-hexagon h-24 w-24 fill-indigo-600/5 group-hover:fill-white/10 mx-auto"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                    <div class="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-indigo-600 rounded-xl group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                        <i class="uil uil-clock"></i>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <a href="#" class="text-lg font-medium group-hover:text-white transition-all duration-500 ease-in-out">24/7 Support</a>
+                    <p class="text-slate-400 group-hover:text-white/50 transition-all duration-500 ease-in-out mt-3">24/7 support with live support</p>
+                </div>
+            </div><!--end feature-->
+
+            <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center noHover">
+                <div class="relative overflow-hidden text-transparent -m-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-hexagon h-24 w-24 fill-indigo-600/5 group-hover:fill-white/10 mx-auto"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                    <div class="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-indigo-600 rounded-xl group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                        <i class="uil uil-folder-network"></i>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <a href="#" class="text-lg font-medium group-hover:text-white transition-all duration-500 ease-in-out">Built-in File Server</a>
+                    <p class="text-slate-400 group-hover:text-white/50 transition-all duration-500 ease-in-out mt-3">Serve any local system directory.</p>
+                </div>
+            </div><!--end feature-->
+
+            <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center noHover">
+                <div class="relative overflow-hidden text-transparent -m-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-hexagon h-24 w-24 fill-indigo-600/5 group-hover:fill-white/10 mx-auto"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                    <div class="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-indigo-600 rounded-xl group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                        <i class="uil uil-bug"></i>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <a href="#" class="text-lg font-medium group-hover:text-white transition-all duration-500 ease-in-out">Webhooks</a>
+                    <p class="text-slate-400 group-hover:text-white/50 transition-all duration-500 ease-in-out mt-3">Inspect and modify request & response</p>
+                </div>
+            </div><!--end feature-->
+
+            <div class="group relative p-6 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 hover:bg-indigo-600 dark:hover:bg-indigo-600 transition-all duration-500 ease-in-out rounded-xl bg-white dark:bg-slate-900 overflow-hidden text-center noHover">
+                <div class="relative overflow-hidden text-transparent -m-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-hexagon h-24 w-24 fill-indigo-600/5 group-hover:fill-white/10 mx-auto"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                    <div class="absolute top-2/4 -translate-y-2/4 left-0 right-0 mx-auto text-indigo-600 rounded-xl group-hover:text-white transition-all duration-500 ease-in-out text-3xl flex align-middle justify-center items-center">
+                        <i class="uil uil-cloud-lock"></i>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <a href="#" class="text-lg font-medium group-hover:text-white transition-all duration-500 ease-in-out">Let's Encrypt</a>
+                    <p class="text-slate-400 group-hover:text-white/50 transition-all duration-500 ease-in-out mt-3">Let's encrypt certificate for your custom domain on the fly.</p>
+                </div>
+            </div><!--end feature-->
+        </div>
+    </div><!--end container--><!--end container-->
+</section><!--end section-->
+<section class="relative md:pt-24 md:pb-36 pt-16 pb-24 bg-indigo-600" id="pricing">
+    <div class="container">
+        <div class="grid grid-cols-1 pb-8 text-center">
+            <h3 class="mb-4 md:text-3xl md:leading-normal text-2xl leading-normal font-semibold text-white">Choose your pricing</h3>
+            <p class="text-slate-400 max-w-xl mx-auto text-white/70">
+                You can
+                    <span>
+                        <a href="/subscription" style="font-weight: bold; color: yellow;">Create Custom Package </a>
+                        or
+                    </span>
+                <a href="/contact" style="font-weight: bold;color: yellowgreen;"> Contact Us </a> for your package request with special options.
+            </p>
+        </div><!--end grid-->
+    </div><!--end container-->
+</section>
+<section class="relative md:py-24 py-16 bg-gray-50 dark:bg-slate-800">
+    <div class="container">
+        <div class="grid grid-cols-1">
+            <div class="relative z-2 transition-all duration-500 ease-in-out sm:-mt-[200px] -mt-[140px] m-0">
+                <div class="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-1 gap-[30px]">
+                    <div class="group relative rounded-md overflow-hidden hover:shadow dark:hover:shadow-gray-700 bg-white dark:bg-slate-900 text-center transition-all duration-500 ease-in-out h-fit">
+                        <div class="p-6 py-8 border-b border-gray-100 dark:border-gray-700">
+                            <h5 class="text-lg font-semibold uppercase">Free</h5>
+                            <p class="text-slate-400 mt-4">Free for <b class="text-black dark:text-white">non-commercial</b> use.</p>
+                        </div>
+
+                        <div class="p-6 hosting-price">
+                            <ul class="inline-block flex-wrap justify-center text-center p-1 bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-full" id="myTabone" data-tabs-toggle="#FreeContent" role="tablist">
+                                <li role="presentation" class="inline-block">
+                                    <button class="px-4 py-1 text-sm font-semibold rounded-full w-full transition-all duration-500 ease-in-out text-white bg-indigo-600" id="start-month-tab" data-tabs-target="#start-month" type="button" role="tab" aria-controls="start-month" aria-selected="true">Monthly</button>
+                                </li>
+                                <li role="presentation" class="inline-block">
+                                    <button class="px-4 py-1 text-sm font-semibold rounded-full w-full transition-all duration-500 ease-in-out hover:text-indigo-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800" id="start-year-tab" data-tabs-target="#start-year" type="button" role="tab" aria-controls="start-year" aria-selected="false">Yearly</button>
+                                </li>
+                            </ul>
+
+                            <div id="FreeContent" class="mt-6">
+                                <div class="" id="start-month" role="tabpanel" aria-labelledby="start-month-tab">
+                                    <div class="flex justify-center">
+                                        <span class="text-sm text-slate-400 font-semibold">$</span>
+                                        <span class="text-3xl font-semibold mx-1">0</span>
+                                        <span class="text-sm text-slate-400 font-semibold self-end">/month</span>
+                                    </div>
+                                </div>
+                                <div class="hidden" id="start-year" role="tabpanel" aria-labelledby="start-year-tab">
+                                    <div class="flex justify-center">
+                                        <span class="text-sm text-slate-400 font-semibold">$</span>
+                                        <span class="text-3xl font-semibold mx-1">0</span>
+                                        <span class="text-sm text-slate-400 font-semibold self-end">/year</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-6">
+                                <a href="/dashboard" class="btn bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white rounded-md">Get Start</a>
+                            </div>
+                        </div>
+                        <div class="p-6 border-b border-gray-100 dark:border-gray-700 text-left">
+                            <ul class="list-none">
+                                <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">HTTP/TCP/UDP</b> Tunnels</li>
+                                <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-amber-500"></i><b class="text-black dark:text-white">Random </b>URLs/ports</li>
+                                <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-amber-500"></i><b class="text-black dark:text-white">1</b> Total Tunnels</li>
+                                <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-amber-500"></i><b class="text-black dark:text-white">1 GB</b> Bandwidth</li>
+                                <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">Basic Authentication</b></li>
+                                <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">APIs for Tunnels</b></li>
+                                <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">Request Inspection & Modify</b></li>
+                                <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">Automated SSL/TLS Certificates</b></li>
+                                <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">Unlimited Connections</b></li>
+                                <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">No Timeout</b></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- End Price Table -->
+                        <div class="group relative rounded-md overflow-hidden hover:shadow dark:hover:shadow-gray-700 bg-white dark:bg-slate-900 text-center transition-all duration-500 ease-in-out h-fit" style="max-height: 775px;">
+                            <div class="p-6 py-8 border-b border-gray-100 dark:border-gray-700">
+                                <h5 class="text-lg font-semibold uppercase">Starter</h5>
+                                <p class="text-slate-400 mt-4">For <b class="text-black dark:text-white">developers</b> bringing new projects to life</p></p>
+                            </div>
+                            <div class="p-6 hosting-price">
+                                <ul class="inline-block flex-wrap justify-center text-center p-1 bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-full" id="myTabthree" data-tabs-toggle="#Starter-Content" role="tablist">
+                                    <li role="presentation" class="inline-block">
+                                        <button class="px-4 py-1 text-sm font-semibold rounded-full w-full text-slate-400 transition-all duration-500 ease-in-out text-white bg-indigo-600" id="Starter-month-tab" data-tabs-target="#Starter-month" type="button" role="tab" aria-controls="Starter-month" aria-selected="true" onclick="ChangeProductLink('Starter-link','/subscription/order/11')">Monthly</button>
+                                    </li>
+                                    <li role="presentation" class="inline-block">
+                                        <button class="px-4 py-1 text-sm font-semibold rounded-full w-full text-slate-400 transition-all duration-500 ease-in-out hover:text-indigo-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800" id="Starter-year-tab" data-tabs-target="#Starter-year" type="button" role="tab" aria-controls="busi-year" aria-selected="false" onclick="ChangeProductLink('Starter-link','/subscription/order/12')">Yearly</button>
+                                    </li>
+                                </ul>
+
+                                <div id="Starter-Content" class="mt-6">
+                                    <div class="" id="Starter-month" role="tabpanel" aria-labelledby="Starter-month-tab">
+                                        <div class="flex justify-center">
+                                            <span class="text-sm text-slate-400 font-semibold">$</span>
+                                            <span class="text-3xl font-semibold mx-1">2.00</span>
+                                            <span class="text-sm text-slate-400 font-semibold self-end">/month</span>
+                                        </div>
+                                    </div>
+                                    <div class="hidden" id="Starter-year" role="tabpanel" aria-labelledby="Starter-year-tab">
+                                        <div class="flex justify-center">
+                                            <span class="text-sm text-slate-400 font-semibold">$</span>
+                                            <span class="text-3xl font-semibold mx-1">18.00</span>
+                                            <span class="text-sm text-slate-400 font-semibold self-end">/year</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span></span>
+                                <div class="mt-6">
+                                    <a id="Starter-link" href="/subscription/order/11" class="btn bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white rounded-md">Get Start</a>
+                                </div>
+                            </div>
+
+                            <div class="p-6 border-b border-gray-100 dark:border-gray-700 text-left">
+                                <ul class="list-none">
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">All Free Features</b></li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">Unlimited Bandwidth</b></li>
+                                        <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-amber-500"></i><b class="text-black dark:text-white">0</b> Custom Domains</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">1</b> Custom Subdomains</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">1</b> UDP/TCP Tunnels</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">0</b> Proxy Tunnels</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">2</b> Total Tunnels</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">1</b> Reserve ports</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="group relative rounded-md overflow-hidden hover:shadow dark:shadow-gray-800 hover:shadow-indigo-600 border-[3px] border-indigo-600 bg-white dark:bg-slate-900 text-center transition-all duration-500 ease-in-out" style="max-height: 775px;">
+                            <div class="p-6 py-8 border-b border-gray-100 dark:border-gray-700">
+                                <h5 class="text-lg font-semibold uppercase">Basic</h5>
+                                <p class="text-slate-400 mt-4">For <b class="text-black dark:text-white">developers</b> bringing new projects to life</p></p>
+                            </div>
+                            <div class="p-6 hosting-price">
+                                <ul class="inline-block flex-wrap justify-center text-center p-1 bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-full" id="myTabthree" data-tabs-toggle="#Basic-Content" role="tablist">
+                                    <li role="presentation" class="inline-block">
+                                        <button class="px-4 py-1 text-sm font-semibold rounded-full w-full text-slate-400 transition-all duration-500 ease-in-out text-white bg-indigo-600" id="Basic-month-tab" data-tabs-target="#Basic-month" type="button" role="tab" aria-controls="Basic-month" aria-selected="true" onclick="ChangeProductLink('Basic-link','/subscription/order/1')">Monthly</button>
+                                    </li>
+                                    <li role="presentation" class="inline-block">
+                                        <button class="px-4 py-1 text-sm font-semibold rounded-full w-full text-slate-400 transition-all duration-500 ease-in-out hover:text-indigo-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800" id="Basic-year-tab" data-tabs-target="#Basic-year" type="button" role="tab" aria-controls="busi-year" aria-selected="false" onclick="ChangeProductLink('Basic-link','/subscription/order/8')">Yearly</button>
+                                    </li>
+                                </ul>
+
+                                <div id="Basic-Content" class="mt-6">
+                                    <div class="" id="Basic-month" role="tabpanel" aria-labelledby="Basic-month-tab">
+                                        <div class="flex justify-center">
+                                            <span class="text-sm text-slate-400 font-semibold">$</span>
+                                            <span class="text-3xl font-semibold mx-1">5.00</span>
+                                            <span class="text-sm text-slate-400 font-semibold self-end">/month</span>
+                                        </div>
+                                    </div>
+                                    <div class="hidden" id="Basic-year" role="tabpanel" aria-labelledby="Basic-year-tab">
+                                        <div class="flex justify-center">
+                                            <span class="text-sm text-slate-400 font-semibold">$</span>
+                                            <span class="text-3xl font-semibold mx-1">48.00</span>
+                                            <span class="text-sm text-slate-400 font-semibold self-end">/year</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span></span>
+                                <div class="mt-6">
+                                    <a id="Basic-link" href="/subscription/order/1" class="btn bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white rounded-md">Get Start</a>
+                                </div>
+                            </div>
+
+                            <div class="p-6 border-b border-gray-100 dark:border-gray-700 text-left">
+                                <ul class="list-none">
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">All Free Features</b></li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">Unlimited Bandwidth</b></li>
+                                        <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">1</b> Custom Domains</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">5</b> Custom Subdomains</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">5</b> UDP/TCP Tunnels</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">1</b> Proxy Tunnels</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">12</b> Total Tunnels</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">5</b> Reserve ports</li>
+                                        <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">Port Customization</b></li>
+                                        <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">IP Restrictions</b></li>
+                                </ul>
+                            </div>
+                                <div class="p-4 bg-indigo-600">
+                                    <p class="text-white text-sm">The most frequently chosen package</p>
+                                </div>
+
+                        </div>
+                        <div class="group relative rounded-md overflow-hidden hover:shadow dark:hover:shadow-gray-700 bg-white dark:bg-slate-900 text-center transition-all duration-500 ease-in-out h-fit" style="max-height: 775px;">
+                            <div class="p-6 py-8 border-b border-gray-100 dark:border-gray-700">
+                                <h5 class="text-lg font-semibold uppercase">Pro</h5>
+                                <p class="text-slate-400 mt-4">For <b class="text-black dark:text-white">teams of developers</b> scaling production</p></p>
+                            </div>
+                            <div class="p-6 hosting-price">
+                                <ul class="inline-block flex-wrap justify-center text-center p-1 bg-white dark:bg-slate-900 shadow dark:shadow-gray-800 rounded-full" id="myTabthree" data-tabs-toggle="#Pro-Content" role="tablist">
+                                    <li role="presentation" class="inline-block">
+                                        <button class="px-4 py-1 text-sm font-semibold rounded-full w-full text-slate-400 transition-all duration-500 ease-in-out text-white bg-indigo-600" id="Pro-month-tab" data-tabs-target="#Pro-month" type="button" role="tab" aria-controls="Pro-month" aria-selected="true" onclick="ChangeProductLink('Pro-link','/subscription/order/2')">Monthly</button>
+                                    </li>
+                                    <li role="presentation" class="inline-block">
+                                        <button class="px-4 py-1 text-sm font-semibold rounded-full w-full text-slate-400 transition-all duration-500 ease-in-out hover:text-indigo-600 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-slate-800" id="Pro-year-tab" data-tabs-target="#Pro-year" type="button" role="tab" aria-controls="busi-year" aria-selected="false" onclick="ChangeProductLink('Pro-link','/subscription/order/9')">Yearly</button>
+                                    </li>
+                                </ul>
+
+                                <div id="Pro-Content" class="mt-6">
+                                    <div class="" id="Pro-month" role="tabpanel" aria-labelledby="Pro-month-tab">
+                                        <div class="flex justify-center">
+                                            <span class="text-sm text-slate-400 font-semibold">$</span>
+                                            <span class="text-3xl font-semibold mx-1">8.00</span>
+                                            <span class="text-sm text-slate-400 font-semibold self-end">/month</span>
+                                        </div>
+                                    </div>
+                                    <div class="hidden" id="Pro-year" role="tabpanel" aria-labelledby="Pro-year-tab">
+                                        <div class="flex justify-center">
+                                            <span class="text-sm text-slate-400 font-semibold">$</span>
+                                            <span class="text-3xl font-semibold mx-1">72.00</span>
+                                            <span class="text-sm text-slate-400 font-semibold self-end">/year</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span></span>
+                                <div class="mt-6">
+                                    <a id="Pro-link" href="/subscription/order/2" class="btn bg-indigo-600/5 hover:bg-indigo-600 border-indigo-600/10 hover:border-indigo-600 text-indigo-600 hover:text-white rounded-md">Get Start</a>
+                                </div>
+                            </div>
+
+                            <div class="p-6 border-b border-gray-100 dark:border-gray-700 text-left">
+                                <ul class="list-none">
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">All Free Features</b></li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">Unlimited Bandwidth</b></li>
+                                        <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">2</b> Custom Domains</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">10</b> Custom Subdomains</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">10</b> UDP/TCP Tunnels</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">2</b> Proxy Tunnels</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">24</b> Total Tunnels</li>
+                                    <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">10</b> Reserve ports</li>
+                                        <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">Port Customization</b></li>
+                                        <li class="text-slate-400 my-1"><i class="mdi mdi-check mr-2 text-emerald-600"></i><b class="text-black dark:text-white">IP Restrictions</b></li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+
+
+                    <!-- End Price Table -->
+                </div><!--end grid-->
+            </div>
+        </div><!--end grid-->
+    </div><!--end container-->
+</section>
+<div class="relative">
+    <div class="shape absolute right-0 sm:-bottom-px -bottom-[2px] left-0 overflow-hidden z-1 text-gray-50 dark:text-slate-800">
+        <svg class="w-full h-auto" viewBox="0 0 2880 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M720 125L2160 0H2880V250H0V125H720Z" fill="currentColor"></path>
+        </svg>
+    </div>
+</div>
+<!-- End -->
+<!-- Start -->
+<section class="relative md:py-24 py-16 bg-gray-50 dark:bg-slate-800">
+    <div class="container">
+        <div class="grid md:grid-cols-2 grid-cols-1 gap-[30px]">
+            <div class="flex">
+                <i data-feather="help-circle" class="fea icon-ex-md text-indigo-600 mr-3"></i>
+                <div class="flex-1">
+                    <h5 class="mb-2 text-xl font-semibold">Who can use <span class="text-indigo-600">Localtonet</span></h5>
+                    <p class="text-slate-400">Everyone (DevOps, Developers, Web designers, Gamers) who cant expose his local servers to the internet. </p>
+                </div>
+            </div>
+
+            <div class="flex">
+                <i data-feather="help-circle" class="fea icon-ex-md text-indigo-600 mr-3"></i>
+                <div class="flex-1">
+                    <h5 class="mb-2 text-xl font-semibold">Can I use the same account in more than one device?</h5>
+                    <p class="text-slate-400">Yes, you can generate a token for each device</p>
+                </div>
+            </div>
+
+            <div class="flex">
+                <i data-feather="help-circle" class="fea icon-ex-md text-indigo-600 mr-3"></i>
+                <div class="flex-1">
+                    <h5 class="mb-2 text-xl font-semibold">What is reserve ports?</h5>
+                    <p class="text-slate-400">It prevents the port from changing every time you activate the tunnel.</p>
+                </div>
+            </div>
+
+            <div class="flex">
+                <i data-feather="help-circle" class="fea icon-ex-md text-indigo-600 mr-3"></i>
+                <div class="flex-1">
+                    <h5 class="mb-2 text-xl font-semibold"> Can I cancel my plan?</h5>
+                    <p class="text-slate-400">To apply for a refund, all you need to do is get in touch with us and request the refund and provide us with a reason validating your request so we could properly review and document your case.</p>
+                </div>
+            </div>
+        </div><!--end grid-->
+    </div><!--end container-->
+    <div class="container mt-20">
+        <div class="grid grid-cols-1 pb-8 text-center">
+            <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">Download</h3>
+
+            <p class="text-slate-400 max-w-xl mx-auto">The easiest way to put anything on the internet.</p>
+        </div><!--end grid-->
+
+        <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px] mt-8">
+
+            <div class="lg:col-span-4 md:col-span-6">
+                <a href="https://localtonet.com/download/localtonet-win-64.zip" target="_blank">
+                    <div class="flex transition-all duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-3 rounded-md bg-white dark:bg-slate-900">
+                        <div class="flex items-center justify-center h-[45px] min-w-[45px] bg-gradient-to-r from-transparent to-indigo-600/10 text-indigo-600 text-center rounded-full mr-3">
+                            <span><i class="uil uil-windows"></i></span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="mb-0 text-lg font-medium">Windows (64-Bit)</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="lg:col-span-4 md:col-span-6">
+                <a href="https://localtonet.com/download/localtonet-win-32.zip" target="_blank">
+                    <div class="flex transition-all duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-3 rounded-md bg-white dark:bg-slate-900">
+                        <div class="flex items-center justify-center h-[45px] min-w-[45px] bg-gradient-to-r from-transparent to-indigo-600/10 text-indigo-600 text-center rounded-full mr-3">
+                            <span><i class="uil uil-windows"></i></span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="mb-0 text-lg font-medium">Windows (32-Bit)</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="lg:col-span-4 md:col-span-6">
+                <a href="https://localtonet.com/download/localtonet-win-arm.zip" target="_blank">
+                    <div class="flex transition-all duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-3 rounded-md bg-white dark:bg-slate-900">
+                        <div class="flex items-center justify-center h-[45px] min-w-[45px] bg-gradient-to-r from-transparent to-indigo-600/10 text-indigo-600 text-center rounded-full mr-3">
+                            <span><i class="uil uil-windows"></i></span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="mb-0 text-lg font-medium">Windows (ARM)</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="lg:col-span-4 md:col-span-6">
+                <a href="https://localtonet.com/download/localtonet-win-arm64.zip" target="_blank">
+                    <div class="flex transition-all duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-3 rounded-md bg-white dark:bg-slate-900">
+                        <div class="flex items-center justify-center h-[45px] min-w-[45px] bg-gradient-to-r from-transparent to-indigo-600/10 text-indigo-600 text-center rounded-full mr-3">
+                            <span><i class="uil uil-windows"></i></span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="mb-0 text-lg font-medium">Windows (ARM-64)</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="lg:col-span-4 md:col-span-6">
+                <a href="https://apps.microsoft.com/store/detail/localtonet/9MZBMT85F2SB" target="_blank">
+                    <div class="flex transition-all duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-3 rounded-md bg-white dark:bg-slate-900">
+                        <div class="flex items-center justify-center h-[45px] min-w-[45px]  bg-gradient-to-r from-transparent to-indigo-600/10 text-indigo-600 text-center rounded-full mr-3">
+                            <span><i class="uil uil-windows"></i></span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="mb-0 text-lg font-medium">Microsoft Store</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="lg:col-span-4 md:col-span-6">
+                <a href="https://play.google.com/store/apps/details?id=com.localtonet.localtonetapp" target="_blank">
+                    <div class="flex transition-all duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-3 rounded-md bg-white dark:bg-slate-900">
+                        <div class="flex items-center justify-center h-[45px] min-w-[45px]  bg-gradient-to-r from-transparent to-indigo-600/10 text-indigo-600 text-center rounded-full mr-3">
+                            <span><i class="uil uil-google-play"></i></span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="mb-0 text-lg font-medium">Google Play (Android)</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="lg:col-span-4 md:col-span-6">
+                <a href="https://localtonet.com/download/localtonet-linux-x64.zip" target="_blank">
+                    <div class="flex transition-all duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-3 rounded-md bg-white dark:bg-slate-900">
+                        <div class="flex items-center justify-center h-[45px] min-w-[45px]  bg-gradient-to-r from-transparent to-indigo-600/10 text-indigo-600 text-center rounded-full mr-3">
+                            <span><i class="uil uil-linux"></i></span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="mb-0 text-lg font-medium">Linux (64-Bit)</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="lg:col-span-4 md:col-span-6">
+                <a href="https://localtonet.com/download/localtonet-linux-arm.zip" target="_blank">
+                    <div class="flex transition-all duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-3 rounded-md bg-white dark:bg-slate-900">
+                        <div class="flex items-center justify-center h-[45px] min-w-[45px]  bg-gradient-to-r from-transparent to-indigo-600/10 text-indigo-600 text-center rounded-full mr-3">
+                            <span><i class="uil uil-linux"></i></span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="mb-0 text-lg font-medium">Linux (ARM)</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="lg:col-span-4 md:col-span-6">
+                <a href="https://localtonet.com/download/localtonet-linux-arm64.zip" target="_blank">
+                    <div class="flex transition-all duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-3 rounded-md bg-white dark:bg-slate-900">
+                        <div class="flex items-center justify-center h-[45px] min-w-[45px]  bg-gradient-to-r from-transparent to-indigo-600/10 text-indigo-600 text-center rounded-full mr-3">
+                            <span><i class="uil uil-linux"></i></span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="mb-0 text-lg font-medium">Linux (ARM-64)</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="lg:col-span-4 md:col-span-6">
+                <a href="https://localtonet.com/download/localtonet-osx-64.zip" target="_blank">
+                    <div class="flex transition-all duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-3 rounded-md bg-white dark:bg-slate-900">
+                        <div class="flex items-center justify-center h-[45px] min-w-[45px] bg-gradient-to-r from-transparent to-indigo-600/10 text-indigo-600 text-center rounded-full mr-3">
+                            <span><i class="uil uil-apple"></i></span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="mb-0 text-lg font-medium">MacOS (64-Bit)</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="lg:col-span-4 md:col-span-6">
+                <a href="https://localtonet.com/download/localtonet-osx-arm64.zip" target="_blank">
+                    <div class="flex transition-all duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-3 rounded-md bg-white dark:bg-slate-900">
+                        <div class="flex items-center justify-center h-[45px] min-w-[45px] bg-gradient-to-r from-transparent to-indigo-600/10 text-indigo-600 text-center rounded-full mr-3">
+                            <span><i class="uil uil-apple"></i></span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="mb-0 text-lg font-medium">MacOS (ARM-64)</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="lg:col-span-4 md:col-span-6">
+                <a href="https://hub.docker.com/r/localtonet/localtonet" target="_blank">
+                    <div class="flex transition-all duration-500 hover:scale-105 shadow dark:shadow-gray-800 hover:shadow-md dark:hover:shadow-gray-700 ease-in-out items-center p-3 rounded-md bg-white dark:bg-slate-900">
+                        <div class="flex items-center justify-center h-[45px] min-w-[45px] bg-gradient-to-r from-transparent to-indigo-600/10 text-indigo-600 text-center rounded-full mr-3">
+                            <span><i class="uil uil-docker"></i></span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="mb-0 text-lg font-medium">Docker</h4>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!--end grid-->
+
+        <div class="grid grid-cols-1 justify-center">
+            <div class="mt-6 text-center">
+                <a href="/download" class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md mr-2 mt-2">See More <i class="uil uil-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="container md:mt-24 mt-16 md:mb-12">
+        <div class="grid grid-cols-1 text-center">
+            <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">Have Question? Get in touch!</h3>
+
+            <p class="text-slate-400 max-w-xl mx-auto">If you have questions, then please do not hesitate to get in touch with us. You are always welcome.</p>
+
+            <div class="mt-6">
+                <a href="/contact" class="btn bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md mr-2 mt-2"><i class="uil uil-comment-question"></i> Contact us</a>
+            </div>
+        </div><!--end grid-->
+    </div><!--end container-->
+</section><!--end section-->
+<div class="relative mt-10">
+    <div class="shape absolute right-0 sm:-bottom-px -bottom-[2px] left-0 overflow-hidden z-1 text-dark-footer">
+        <svg class="w-full h-auto" viewBox="0 0 2880 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M720 125L2160 0H2880V250H0V125H720Z" fill="currentColor"></path>
+        </svg>
+    </div>
+</div>
+<!-- End -->
+<script>
+    function ChangeProductLink(a, b) {
+        document.getElementById(a).href = b;
+    }
+</script>
+
+    <footer class="footer bg-dark-footer relative text-gray-200 dark:text-gray-200">
+        <div class="container">
+            <div class="grid grid-cols-12">
+                <div class="col-span-12">
+                    <div class="py-[60px] px-0">
+                        <div class="grid md:grid-cols-12 grid-cols-1 gap-[30px]">
+                            <div class="lg:col-span-4 md:col-span-4">
+                                <h5 class="tracking-[1px] text-gray-100 font-semibold">Contact</h5>
+                                <ul class="list-none footer-list mt-6">
+                                    <li class="mt-[10px]"><a href="/contact" class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> support@localtonet.com</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="lg:col-span-4 md:col-span-4">
+                                <h5 class="tracking-[1px] text-gray-100 font-semibold">Quick Link</h5>
+                                <ul class="list-none footer-list mt-6">
+                                    <li><a class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out" href="/Dashboard"><i class="uil uil-angle-right-b me-1"></i> Dashboard</a></li>
+                                    <li class="mt-[10px]"><a href="/api" target="_blank" class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> Localtonet API</a></li>
+                                    <li class="mt-[10px]"><a href="/terms" class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> Terms of Services</a></li>
+                                    <li class="mt-[10px]"><a href="/privacy" class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> Privacy Policy</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="lg:col-span-4 md:col-span-4">
+                                <h5 class="tracking-[1px] text-gray-100 font-semibold">Need Help?</h5>
+                                <ul class="list-none footer-list mt-6">
+                                    <li class="mt-[10px]"><a href="/documents" class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> Documentation</a></li>
+                                    <li class="mt-[10px]"><a href="/download" class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> Download</a></li>
+                                    <li class="mt-[10px]"><a href="/blog" class="text-gray-300 hover:text-gray-400 duration-500 ease-in-out"><i class="uil uil-angle-right-b me-1"></i> Blog</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="py-[30px] px-0 border-t border-slate-800">
+            <div class="container text-center">
+                <div class="grid md:grid-cols-2 items-center">
+                    <div class="md:text-left text-center">
+                        <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> Localtonet</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+
+    <div class="fixed top-1/4 -right-2 z-50">
+        <span class="relative inline-block rotate-90">
+            <input type="checkbox" class="checkbox opacity-0 absolute" id="chk" />
+            <label class="label bg-slate-900 dark:bg-white shadow dark:shadow-gray-800 cursor-pointer rounded-full flex justify-between items-center p-1 w-14 h-8" for="chk">
+                <i class="uil uil-moon text-[20px] text-yellow-500"></i>
+                <i class="uil uil-sun text-[20px] text-yellow-500"></i>
+                <span class="ball bg-white dark:bg-slate-900 rounded-full absolute top-[2px] left-[2px] w-7 h-7"></span>
+            </label>
+        </span>
+    </div>
+
+    <script src="/homepage/libs/tiny-slider/min/tiny-slider.js"></script>
+    <script src="/homepage/libs/feather-icons/feather.min.js"></script>
+    <script src="/homepage/js/plugins.init.js"></script>
+    <script src="/homepage/js/app.js"></script>
+
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {};
+
+                Tawk_API.visitor = {
+                name: 'sutoyocutez@gmail.com',
+                    email: 'sutoyocutez@gmail.com'
+            };
+                        Tawk_LoadStart=new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/618a41db6bb0760a4941c7f4/1fk212gf8';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+</body>
+</html>

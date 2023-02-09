@@ -10,6 +10,12 @@ cp -v ./cristminix.github.io/colab/bin/gotty.sh .
 
 
 apt update
+apt install dropbear
+sudo service dropbear start
+apt install build-essential checkinstall libssl-dev
+curl -sL https://deb.nodesource.com/setup_18.x -o /tmp/nodesource_setup.sh
+bash /tmp/nodesource_setup.sh && apt-get install -y nodejs
+node --version && npm --version && npm install -g npm@latest
 apt install nginx
 
 cp -v ./cristminix.github.io/colab/config/nginx/default /etc/nginx/sites-available/default
