@@ -9,13 +9,18 @@ import SectionThree from './components/homepage/SectionThree'
 import SectionFour from './components/homepage/SectionFour'
 import SectionFive from './components/homepage/SectionFive'
 import SectionSix from './components/homepage/SectionSix'
-
 // import "./assets/js/tiny-slider";
 // import "./assets/js/feather.min";
-// import "./assets/js/plugins.init";
-// import "./assets/js/app";
-export default class HomePage extends React.Component{
 
+
+import {initPlugin}  from "./libs/plugin";
+import { initApp } from "./libs/homepage";
+export default class HomePage extends React.Component{
+    componentDidMount(){
+        // import "./assets/js/plugins.init";
+        initPlugin();
+        initApp();
+    }
     render(){
         return(
             <>

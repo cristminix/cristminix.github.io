@@ -1,4 +1,7 @@
-(function(){
+import { tns } from "tiny-slider/src/tiny-slider"
+import "tiny-slider/dist/tiny-slider.css"
+
+export function initPlugin(){
     if(document.getElementsByClassName('tiny-single-item').length > 0) {
         var slider = tns({
             container: '.tiny-single-item',
@@ -1603,4 +1606,4 @@
     } catch (error) {
         
     }
-})()
+}

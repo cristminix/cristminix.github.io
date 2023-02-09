@@ -1,19 +1,24 @@
 
+import feather from "feather-icons";
 
-window.addEventListener('load', fn, false)
+export function initApp(){
 
-//  window.onload = function loader() {
-function fn() {
-    // Preloader
-    if (document.getElementById('preloader')) {
-        setTimeout(() => {
-            document.getElementById('preloader').style.visibility = 'hidden';
-            document.getElementById('preloader').style.opacity = '0';
-        }, 350);
-    }
-    // Menus
-    activateMenu();
-}
+
+window.onload = function () {
+    window.addEventListener('load', fn, false)
+
+    function fn() {
+        // Preloader
+        if (document.getElementById('preloader')) {
+            setTimeout(() => {
+                document.getElementById('preloader').style.visibility = 'hidden';
+                document.getElementById('preloader').style.opacity = '0';
+            }, 350);
+        }
+        // Menus
+        activateMenu();
+    }    
+    
 
 //Menu
 /*********************/
@@ -304,3 +309,4 @@ try {
 } catch (error) {
     
 }
+}}
