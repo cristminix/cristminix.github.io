@@ -5,9 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node hook.cjs && vite build",
+    "build": "node hook.cjs && vite build && node fixbuild.cjs",
     "preview": "node hook.cjs && vite preview",
-    "hook": "node hook.cjs"
+    "hook": "node hook.cjs",
+    "fixbuild" : "node fixbuild.cjs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
