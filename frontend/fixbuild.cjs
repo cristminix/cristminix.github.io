@@ -36,14 +36,19 @@ function getUnresolvedScripts(lines,writeBuffer){
         const matches = line.match(regex);
         if(matches){
             if(matches.length > 0){
-                const src = line.match(/src=\"(.*)\"/);
+                let src = line.match(/src=\"(.*)\"/);
                 if(src){
                     if(src.length>1){
-                        const source = src[1].replace(/.\/src\//,"frontend/src/");
+                        let source = src[1].replace(/.\/src\//,"frontend/src/");
                         returnValues.unresolveSources.push([src[1],source])
 
                         line = `<script type="text/javascript" src="${source}"></script>`
                         lastLineFound = currentLine
+                    }
+                }else{
+                    src = line.match(/image\:/);
+                    if(src.length > 0){
+                        line = line.replace(/.\/src\//,"frontend/src/");
                     }
                 }
             }
