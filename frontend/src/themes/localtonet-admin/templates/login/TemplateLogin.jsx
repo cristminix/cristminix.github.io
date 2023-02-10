@@ -4,7 +4,7 @@ import LeftSide from "./components/LeftSide";
 import RightSide from "./components/RightSide";
 
 export default function TemplateLogin(){
-
+    document.title = "Masuk"
     return(
         <>
 <div className="d-flex flex-column flex-root">

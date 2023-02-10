@@ -23,18 +23,18 @@ export default class DashboardContent extends React.Component{
                     <div className="container-fluid" id="kt_content_container">
                         <div className="row">
                             <Subscription/>
-                            <MyToken/>
+                            {/* <MyToken/>
                             <Bandwidth/>
-                            <MyApiKey/>
+                            <MyApiKey/> */}
                         </div>
-                        <div className="row mt-3">
+                        {/* <div className="row mt-3">
                             <ActiveHttpTunnel/>
                             <ActiveTcpUdpTunnel/>
                         </div>
                         <div className="row mt-3">
                             <Documents/>
                             <Downloads/>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
                 <FooterContent/>

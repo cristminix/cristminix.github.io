@@ -9,7 +9,7 @@ export default class SideMenu extends React.Component{
     <div className="w-100 hover-scroll-overlay-y pe-2 me-2" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_user, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside, #kt_aside_menu, #kt_aside_menu_wrapper" data-kt-scroll-offset="0">
         <div className="menu menu-column menu-rounded menu-sub-indention menu-active-bg fw-semibold" id="#kt_aside_menu" data-kt-menu="true">
             <MenuItem link="#dashboard" caption="Dashboard" icon="dashboard"/>
-            <div data-kt-menu-trigger="click" className="menu-item menu-accordion">
+            {/* <div data-kt-menu-trigger="click" className="menu-item menu-accordion">
                 <MenuItem hasChild={true} caption="My Tunnels" icon="tunnel"/>
                 <div className="menu-sub menu-sub-accordion not-show">
                     <MenuItem bullet={true} link="#tunnel/http" caption="HTTP"/>
@@ -22,7 +22,7 @@ export default class SideMenu extends React.Component{
             <MenuItem link="#usertoken" icon="token" caption="My Token"/>
             <MenuItem link="#subscription" icon="browsePlan" caption="Browse Plan"/>
             <MenuItem link="#order" icon="history" caption="Order History"/>
-            
+             */}
         </div>
     </div>
 </div>            
