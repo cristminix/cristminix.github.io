@@ -9,11 +9,11 @@ import { Component } from "react";
 // import About from "./component/About";
 // import Contact from "./component/Contact";
 import Template from "./pages/Template";
-
+import TemplateLogin  from "./templates/login/TemplateLogin";
 function App(){
       return (
 <>
-<Template/>
+<TemplateLogin/>
 </>
 );
 } 
