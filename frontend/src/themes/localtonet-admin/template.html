@@ -5,9 +5,146 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Localtonet Admin</title>
+    <title>Localtonet Dashboard | Dashboard</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Localtonet Dashboard | Dashboard" />
+    <meta property="og:url" content="https://localtonet.com/Dashboard" />
+    <meta property="og:site_name" content="Localtonet | Dashboard" />
+
+    <link rel="shortcut icon" href="./src/themes/localtonet-admin/assets/media/logos/favicon.ico" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+    
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-2XMRM9PZYN"></script> -->
+    <script>
+        // window.dataLayer = window.dataLayer || [];
+        // function gtag() { dataLayer.push(arguments); }
+        // gtag('js', new Date());
+
+        // gtag('config', 'G-2XMRM9PZYN');
+
+    </script>
+
+    <style>
+        
+
+    </style>
 </head>
-<body>
+<body id="kt_body">
+    <script>
+        var defaultThemeMode = "light";
+        var themeMode;
+        if (document.documentElement) {
+            if (document.documentElement.hasAttribute("data-theme-mode")) {
+                themeMode = document.documentElement.getAttribute("data-theme-mode");
+            }
+            else {
+                if (localStorage.getItem("data-theme") !== null) {
+                    themeMode = localStorage.getItem("data-theme");
+                }
+                else {
+                    themeMode = defaultThemeMode;
+                }
+            }
+            if (themeMode === "system") {
+                themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            }
+            document.documentElement.setAttribute("data-theme", themeMode);
+        }
+    </script>
     <div id="root"></div>
+    <script src="./src/themes/localtonet-admin/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/js/scripts.bundle.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/plugins/custom/datatables/datatables.bundle.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/js/widgets.bundle.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/js/custom/widgets.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/js/custom/apps/chat/chat.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/js/custom/utilities/modals/users-search.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/plugins/global/loading-overlay.min.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/plugins/global/jquery-validation/jquery.validate.min.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/plugins/global/jquery-confirm/js/jquery-confirm.min.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/plugins/global/jquery-resizable.min.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/plugins/custom/froala/froala_editor.pkgd.min.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/plugins/custom/top-notification-bar-topper/js/topper.js"></script>
+    <script src="./src/themes/localtonet-admin/assets/pages/shared-v2.js"></script>
+    <script>
+        $.LoadingOverlaySetup({
+            background: 'rgba(81, 86, 190, 0.4)',
+            image: "./src/themes/localtonet-admin/assets/images/favicon.ico",
+            imageAnimation: "1.7s fadein",
+            imageAutoResize: true,
+        });
+    </script>
+
+
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        // var Tawk_API = Tawk_API || {};
+
+        //         Tawk_API.visitor = {
+        //         name: 'sutoyocutez@gmail.com',
+        //             email: 'sutoyocutez@gmail.com'
+        //     };
+        //                 Tawk_LoadStart=new Date();
+        // (function () {
+        //     var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        //     s1.async = true;
+        //     s1.src = 'https://embed.tawk.to/618a41db6bb0760a4941c7f4/1fk212gf8';
+        //     s1.charset = 'UTF-8';
+        //     s1.setAttribute('crossorigin', '*');
+        //     s0.parentNode.insertBefore(s1, s0);
+        // })();
+    </script>
+    <!--End of Tawk.to Script-->
+    
+    <script>
+        function copyToClipboard(element) {
+            var $temp = $("<input>");
+            $("body").append($temp);
+            $temp.val($.trim($(element).text())).select();
+            document.execCommand("copy");
+            toastr.success('Copied');
+            $temp.remove();
+        }
+
+        function changeApiKey() {
+            $("#apiKeyDiv").LoadingOverlay("show");
+            $.confirm({
+                title: 'Warning!',
+                content: 'Are you sure!',
+                buttons: {
+                    Yes: function () {
+                        $.ajax({
+                            url: "/dashboard/changeapikey",
+                            type: "POST",
+                        }).done(function (response) {
+                            if (response.isSuccess) {
+                                toastr.success('Api Key Changed');
+                                $("#apiKeyDiv").LoadingOverlay("hide");
+                                $("#apiKey").text(response.apiKey);
+                                $("#apiKey").append(" <i class='fas fa-copy' title='Copy'></i>");
+                            } else {
+                                $("#apiKeyDiv").LoadingOverlay("hide");
+                                toastr.error("Api Key can not changed!");
+                            }
+                        }).fail(function (jqXHR, textStatus) {
+                            $("#apiKeyDiv").LoadingOverlay("hide");
+                            toastr.error(textStatus);
+                        });
+                    },
+                    No: function () {
+                        $("#apiKeyDiv").LoadingOverlay("hide");
+                    }
+                }
+            });
+        }
+
+    </script>
     <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

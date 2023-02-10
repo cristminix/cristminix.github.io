@@ -1,0 +1,19 @@
+html[data-theme="dark"] .jconfirm .jconfirm-box {
+    background: #1E1E2D;
+}
+
+html, body {
+    font-family: monospace !important;
+}
+
+.aside {
+    background-color: #1e1e2d;
+}
+
+    .aside .aside-menu .menu .menu-item .menu-link .menu-title {
+        color: #8dadad;
+    }
+
+.form-floating .form-select {
+    padding-top: 1.3rem !important;
+}

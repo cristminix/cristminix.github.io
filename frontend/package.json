@@ -4,12 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node hook.cjs && vite",
+    "dev": "vite",
     "build": "node hook.cjs && vite build",
     "preview": "node hook.cjs && vite preview",
-    "hook" : "node hook.cjs"
+    "hook": "node hook.cjs"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "feather-icons": "^4.29.0",
     "firebase": "^8.0.1",
     "fs-extra": "^11.1.0",
