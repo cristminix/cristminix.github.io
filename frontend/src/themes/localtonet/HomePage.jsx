@@ -11,7 +11,7 @@ import SectionFive from './components/homepage/SectionFive'
 import SectionSix from './components/homepage/SectionSix'
 // import "./assets/js/tiny-slider";
 // import "./assets/js/feather.min";
-
+// import "./styles/homepage.css"
 
 import {initPlugin}  from "./libs/plugin";
 import { initApp } from "./libs/homepage";

@@ -1,6 +1,6 @@
 import React from "react"
 import Table from "./dashbord/Table"
-import db from '../libs/db';
+import db from '../../../libs/db';
 import {useState} from 'react';
 
 export default class Dashboard extends React.Component{

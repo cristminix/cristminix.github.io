@@ -11,7 +11,9 @@ export default class DarkModeSwitcher extends React.Component{
     }
     changeThemeMode(themeMode){
         try{
-            document.getElementById("app-instance").setAttribute("class", themeMode);
+            const app = document.getElementById("app-instance");
+            let className = app.className;
+            app.setAttribute("class", className +' '+themeMode);
 
         }catch(e){}
     }
