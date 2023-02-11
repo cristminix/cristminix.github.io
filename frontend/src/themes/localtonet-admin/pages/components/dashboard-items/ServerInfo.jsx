@@ -87,7 +87,8 @@ export default function ServerInfo (){
             const serverUrl = socketConnected ? `http://bore.pub:${row.bore_port}` : "N/A";
             return (
                 <tr>
-                    <th>Server Url</th><td><a target="_blank" href={serverUrl}>{serverUrl}</a></td>
+                    <th>API Url</th><td><a target="_blank" href={serverUrl}>{serverUrl}</a></td>
+                    <th>Server IP</th><td>{row.server_ip}</td>
                 </tr>
             )
             // return Object.keys(row).map(((prop,index)=>{
@@ -102,7 +103,7 @@ export default function ServerInfo (){
     }
     return(
         <>
-        <div className="col-xl-6 mt-2">
+        <div className="col-xl mt-2">
         <div className="card card-flush">
             <div className="card-header border-0 pt-0">
                 <div className="card-title">
