@@ -13,25 +13,27 @@ const serverInfo = {
 
     getBorePort : () => {
         const logFile = path.resolve(__dirname, "../logs/bore.log");
-        if(fs.existsSync(logFile)){
-            const content = fs.readFileSync(logFile).toString();
-            let matches = content.match(/listening\ at\ bore.pub\:(\d+)/g);
-            if(matches.length > 0){
-                const listenInfo = matches[0];
-                matches = listenInfo.match(/(\d+)/);
+        try{
+            if(fs.existsSync(logFile)){
+                const content = fs.readFileSync(logFile).toString();
+                let matches = content.match(/listening\ at\ bore.pub\:(\d+)/g);
                 if(matches.length > 0){
-                    const borePort = matches[0];
-                    return borePort;
-                }	
+                    const listenInfo = matches[0];
+                    matches = listenInfo.match(/(\d+)/);
+                    if(matches.length > 0){
+                        const borePort = matches[0];
+                        return borePort;
+                    }	
+                }
             }
-        }
+        }catch(e){}
         return null;
     },
     getNgrokUrl : () => {
         const logFile = path.resolve(__dirname, "../logs/ngrok.log");
-        if(fs.existsSync(logFile)){
-            fs.readFile(logFile, (err, data) => {
-            if (!err && data) {
+        try{
+            if(fs.existsSync(logFile)){
+                const data = fs.readFileSync(logFile);
                 let content = data.toString().split(" ").join("\n");
                 let regex = /(http[s]?:\/\/.*\.ngrok\.io)/g
                 let matches = content.match(regex)
@@ -41,8 +43,7 @@ const serverInfo = {
                     return ngrokUrl;	
                 }
             }
-            })
-        }
+        }catch(e){}
         return null;
     }
 }

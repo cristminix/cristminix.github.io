@@ -9,46 +9,72 @@ const useSharedSocketState = () => useBetween(useSocketState);
 
 
 let dontRunTwice = true;
+let dontRunTwice2 = true;
 export default function ServerInfo (){
-    const [configsArray,setConfigsArray] = useState("");
-
-
+    const [serverConfig,setServerConfig] = useState("");
     const {socketConnected,setSocketConnected} = useSharedSocketState();
+    async function getServiceMap(){
+        try{
+            const configs = await db.collection('tunnel_config').doc('service_map');
+            const data = await configs.get();
+            if(data.exists){
+                return data.data();
+            }
+        }catch(e){
+    
+        }
+        return null;
+    }
+    async function getTunnelConfig(){
+        try{
+            const configs = await db.collection('tunnel_config').doc('config');
+            const data = await configs.get();
+            if(data.exists){
+                return data.data();
+            }
+        }catch(e){
+    
+        }
+        return null;
+    }
     async function getConfigs(){
-
+        
         console.log("GET CONFIG")
         try {
-          const configs = await db.collection('configs');
-          const data = await configs.get();
-          const _configsArray = [];
-          if(data.empty) {
-              console.log('data empty');
-          }else {
-              data.forEach(doc => {
-                  _configsArray.push(doc.data());
-              });
+          const serviceMap = await getServiceMap();  
+          const config = await getTunnelConfig();
+        //   console.log(config,serviceMap)
+          const _serverConfig = {config,serviceMap};
+          if(config) {
               
-              initSocket(_configsArray);
+              initSocket(_serverConfig);
    
-              setConfigsArray(_configsArray);
-
+              setServerConfig(_serverConfig);
+        //       if(!dontRunTwice2)
+        //       return;
+        //   dontRunTwice2=false;
               setTimeout(()=>{
-                async function updateConfig(){
-                    await getConfigs();
-                }
-
-                updateConfig().then(r=>{});
+                getConfigs().then(r=>{});
               },5000);
+        
           }
         } catch (error) {
             console.log(error.message);
         }
   
     }
-    function initSocket(_configArray){
-        
-        const serverInfo = _configArray[0];
-        const url = `ws://bore.pub:${serverInfo.bore_port}`;
+    function initSocket(_serverConfig){
+        let url;
+        if(_serverConfig.serviceMap.backend == "bore"){
+            url = `ws://bore.pub:${_serverConfig.config.bore_port}`;
+        }
+        else if(_serverConfig.serviceMap.backend == "ngrok"){
+            url = `${_serverConfig.config.ngrok_url}`;
+        }
+        else if(_serverConfig.serviceMap.backend == "localtonet"){
+            url = `https://${_serverConfig.config.localtonet_host}`;
+        }
+        // const serverInfo = _configArray[0];
         
         // console.log(`initSocket ${url} == ${socketClient.url}`)
         if(socketClient.url != url){
@@ -70,26 +96,37 @@ export default function ServerInfo (){
             console.log(`please ${dontRunTwice}`);
             await getConfigs()
            
-            socketClient.setup(socketClient.url);
+            // socketClient.changeUrl(socketClient.url);
             // console.log(socketClient)
 
         }
         dontRunTwice = false;
     }
     
-    componentDidMount().then(r=>{
-        console.log(r)
-    })
+    componentDidMount()
     
     let serverInfoTag = (<tr><td>No Results</td></tr>);
-    if(configsArray){
-        serverInfoTag = configsArray.map((row)=>{
-            const serverUrl = socketConnected ? `http://bore.pub:${row.bore_port}` : "N/A";
-            return (
+    if(serverConfig.config){
+        // serverInfoTag = configsArray.map((row)=>{
+            let serverUrl;
+            if(serverConfig.serviceMap.backend == "bore"){
+                serverUrl = `http://bore.pub:${serverConfig.config.bore_port}`;
+            }
+            else if(serverConfig.serviceMap.backend == "ngrok"){
+                serverUrl = `${serverConfig.config.ngrok_url}`;
+            }
+            else if(serverConfig.serviceMap.backend == "localtonet"){
+                serverUrl = `https://${serverConfig.config.localtonet_host}`;
+            }
+            // serverUrl = socketConnected ? `http://bore.pub:${row.bore_port}` : "N/A";
+            serverInfoTag = (<>
                 <tr>
                     <th>API Url</th><td><a target="_blank" href={serverUrl}>{serverUrl}</a></td>
-                    <th>Server IP</th><td>{row.server_ip}</td>
                 </tr>
+                <tr>    
+                    <th>Server IP</th><td>{serverConfig.config.server_ip}</td>
+                </tr>
+                </>
             )
             // return Object.keys(row).map(((prop,index)=>{
             //     return (
@@ -99,7 +136,7 @@ export default function ServerInfo (){
             //     )
             // })) 
             
-        })
+        // })
     }
     return(
         <>

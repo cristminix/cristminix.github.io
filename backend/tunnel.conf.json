@@ -11,7 +11,20 @@
         "nginx" : "localtonet"
     },
     "service_tokens" : {
-        "ngrok" : ""
+        "ngrok" : "2KRNVIf8yjdoth0L4hVPOC9VDbx_5hi5T3vy2N9xFcE77tWTu",
+        "localtonet" : "PhYs0CTrqcEj4ovwzbRpOB83G5KLkl97Z"
+    },
+    "predefine_configs" : {
+        "localtonet" : {
+            "url" : "https://github.com/cristminix/cristminix.github.io/raw/main/colab/config/localtonet.zip",
+            "format" : "zip",
+            "location" : "USER_DIR/.local/share"
+        },
+        "ngrok" : {
+            "url" : "https://github.com/cristminix/cristminix.github.io/raw/main/colab/config/ngrok.yml",
+            "format" : "yml",
+            "location" : "USER_DIR/.config/ngrok/ngrok.yml"
+        }
     }
 
 }
