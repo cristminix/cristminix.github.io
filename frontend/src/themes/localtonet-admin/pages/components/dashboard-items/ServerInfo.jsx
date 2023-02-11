@@ -1,86 +1,130 @@
-import React,{Component} from "react";
+import React,{Component, useState} from "react";
+import { useBetween } from "use-between";
+
 import db from "../../../../../libs/db";
-import socket from "../../../../../libs/socket";
-export default class ServerInfo extends React.Component{
-    state = {
-        configsArray : []
-    }
-    async getConfigs(){
+import socketClient from "../../../../../libs/socketClient";
+import useSocketState from "./useSocketState";
+const useSharedSocketState = () => useBetween(useSocketState);
+
+
+
+let dontRunTwice = true;
+export default function ServerInfo (){
+    const [configsArray,setConfigsArray] = useState("");
+
+
+    const {socketConnected,setSocketConnected} = useSharedSocketState();
+    async function getConfigs(){
+
+        console.log("GET CONFIG")
         try {
-          // await firestore.collection('config').doc().set({server_ip:'127.0.0.1'});
           const configs = await db.collection('configs');
           const data = await configs.get();
-          const configsArray = [];
+          const _configsArray = [];
           if(data.empty) {
               console.log('data empty');
           }else {
               data.forEach(doc => {
-                  
-                  configsArray.push(doc.data());
+                  _configsArray.push(doc.data());
               });
-              console.log(configsArray);
-              this.setState({configsArray})
-  
+              
+              initSocket(_configsArray);
+   
+              setConfigsArray(_configsArray);
+
+              setTimeout(()=>{
+                async function updateConfig(){
+                    await getConfigs();
+                }
+
+                updateConfig().then(r=>{});
+              },5000);
           }
         } catch (error) {
             console.log(error.message);
         }
   
     }
-    initSocket(){
-        socket.on("connect",()=>{
-            console.log("socket connected");
-        })
-        socket.on("configServer",(r)=>{
-            console.log("configServer changed");
-            this.getConfigs();
-        })
-    }
-    async componentDidMount(){
-        this.initSocket();
-        this.getConfigs();
-    }
-    render(){
-            
-        let serverInfoTag = (<tr><td>No Results</td></tr>);
-        if(this.state.configsArray){
-           serverInfoTag = this.state.configsArray.map((row,index)=>{
-                return Object.keys(row).map((prop=>{
-                    return (
-                        <>
-                        <tr key={prop}><td>{prop}</td><td>{row[prop]}</td></tr>
-                        </>
-                    )
-                })) 
-                
-            })
+    function initSocket(_configArray){
+        
+        const serverInfo = _configArray[0];
+        const url = `ws://bore.pub:${serverInfo.bore_port}`;
+        
+        // console.log(`initSocket ${url} == ${socketClient.url}`)
+        if(socketClient.url != url){
+            console.log(`initSocket ${url}`)
+            socketClient.changeUrl(url);
+            socketClient.instance.on("connect",()=>{
+                setSocketConnected(true);
+                socketClient.instance.on("disconnect",()=>{
+                    setSocketConnected(false);
+                });
+            });
         }
-        return(
-            <>
-            <div className="col-xl-6 mt-2">
-            <div className="card card-flush">
-                <div className="card-header border-0 pt-0">
-                    <div className="card-title">
-                        <div className="d-flex align-items-center position-relative my-1">
-                            Server Info
-                        </div>
-                    </div>
-                    <div className="card-toolbar">
+
+    }
+    async function componentDidMount(){
+
+        
+        if(dontRunTwice){
+            console.log(`please ${dontRunTwice}`);
+            await getConfigs()
+           
+            socketClient.setup(socketClient.url);
+            // console.log(socketClient)
+
+        }
+        dontRunTwice = false;
+    }
+    
+    componentDidMount().then(r=>{
+        console.log(r)
+    })
+    
+    let serverInfoTag = (<tr><td>No Results</td></tr>);
+    if(configsArray){
+        serverInfoTag = configsArray.map((row)=>{
+            const serverUrl = socketConnected ? `http://bore.pub:${row.bore_port}` : "N/A";
+            return (
+                <tr>
+                    <th>Server Url</th><td><a target="_blank" href={serverUrl}>{serverUrl}</a></td>
+                </tr>
+            )
+            // return Object.keys(row).map(((prop,index)=>{
+            //     return (
+            //         <tr key={index}>
+            //             <th key={index}>{prop}</th><td>{row[prop]}</td>
+            //         </tr>
+            //     )
+            // })) 
+            
+        })
+    }
+    return(
+        <>
+        <div className="col-xl-6 mt-2">
+        <div className="card card-flush">
+            <div className="card-header border-0 pt-0">
+                <div className="card-title">
+                    <div className="d-flex align-items-center position-relative my-1">
+                        Server Info
                     </div>
                 </div>
-                <div className="card-body pt-0">
-                    <div className="hover-scroll-overlay-y pe-6 me-n6" style={{maxHeight: "415px"}}>
-                        <table className="table align-middle table-row-dashed fs-6 gy-5 mb-0">
-                            <tbody className="fw-semibold text-gray-600">
-                                {serverInfoTag}   
-                            </tbody>
-                        </table>
-                    </div>
+                <div className="card-toolbar">
+                </div>
+            </div>
+            <div className="card-body pt-0">
+                <div className="hover-scroll-overlay-y pe-6 me-n6" style={{maxHeight: "415px"}}>
+                    <table className="table align-middle table-row-dashed fs-6 gy-5 mb-0">
+                        <tbody className="fw-semibold text-gray-600">
+                            {serverInfoTag}   
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-            </>
-        )
-    }
+    </div>
+        </>
+    )
     
 }

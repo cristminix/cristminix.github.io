@@ -1,20 +1,4 @@
-// const firebase = require('firebase');
-
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBpBE9bWyRzaJP8g1cjgGEuciTrvKJDBrE",
-//   authDomain: "cristminix-c5687.firebaseapp.com",
-//   projectId: "cristminix-c5687",
-//   storageBucket: "cristminix-c5687.appspot.com",
-//   messagingSenderId: "7808653581",
-//   appId: "1:7808653581:web:688ab1ce82143a73d0f844",
-//   measurementId: "G-T5KWSRLVM2"
-// };
-// const db = firebase.initializeApp(firebaseConfig);
-// const firestore = db.firestore();
-
 const firebase = require('../db');
-// const Student = require('../models/student');
 const firestore = firebase.firestore();
 
 
@@ -47,7 +31,7 @@ const configStore = {
       const configsArray = [];
       if(tmpData.empty) {
           console.log('data empty');
-          configStore.initData();
+          // configStore.initData();
       }else {
           tmpData.forEach(doc => {
               // console.log(doc.id);

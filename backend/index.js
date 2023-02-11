@@ -39,20 +39,15 @@ async function checkBorePort(){
 
 io.on("connection", async(s) => {
     console.log("We are live and connected");
-    
-
-    s.on('notice', function (from, msg) {
-        console.log('MSG', from, ' saying ', msg);
-    });
 
     const configServer = await checkBorePort();
     io.emit("configServer", configServer);
-    console.log(configServer);
+    // console.log(configServer);
 });
 
 async function main(){
     await configStore.init();
-    console.log( await checkBorePort());
+    await checkBorePort();
 
     httpServer.listen(config.port, () => console.log('App is listening on url http://localhost:' + config.port));
     // process.exit(0);

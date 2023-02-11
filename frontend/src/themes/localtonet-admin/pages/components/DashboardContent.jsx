@@ -11,6 +11,7 @@ import Downloads from "./dashboard-items/Downloads";
 import FooterContent from "./FooterContent";
 import HeaderContent from "./HeaderContent";
 import ServerInfo from "./dashboard-items/ServerInfo";
+import SocketClientInfo from "./dashboard-items/SocketClientInfo";
 
 export default class DashboardContent extends React.Component{
 
@@ -23,6 +24,7 @@ export default class DashboardContent extends React.Component{
                 <div className="content d-flex flex-column flex-column-fluid" id="kt_content">
                     <div className="container-fluid" id="kt_content_container">
                         <div className="row">
+                            <SocketClientInfo/>
                             <Subscription/>
                             <ServerInfo/>
                             {/* <MyToken/>
