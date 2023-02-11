@@ -1,0 +1,17 @@
+{
+    "localtonet_host" : "jnjyp.localtonet.com",
+    "localtonet_port" : "80",
+    "ngrok_url" : "",
+    "ngrok_port" : "8088",
+    "bore_port" : "",
+
+    "service_maps" : {
+        "backend" : "ngrok",
+        "ssh" : "bore",
+        "nginx" : "localtonet"
+    },
+    "service_tokens" : {
+        "ngrok" : ""
+    }
+
+}
