@@ -8,7 +8,7 @@
     "build": "node hook.cjs && vite build && node fixbuild.cjs",
     "preview": "node hook.cjs && vite preview",
     "hook": "node hook.cjs",
-    "fixbuild" : "node fixbuild.cjs"
+    "fixbuild": "node fixbuild.cjs"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
@@ -20,6 +20,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.1",
+    "socket.io-client": "^4.6.0",
     "tiny-slider": "^2.9.4"
   },
   "devDependencies": {

@@ -10,6 +10,7 @@ import Documents from "./dashboard-items/Documents";
 import Downloads from "./dashboard-items/Downloads";
 import FooterContent from "./FooterContent";
 import HeaderContent from "./HeaderContent";
+import ServerInfo from "./dashboard-items/ServerInfo";
 
 export default class DashboardContent extends React.Component{
 
@@ -23,6 +24,7 @@ export default class DashboardContent extends React.Component{
                     <div className="container-fluid" id="kt_content_container">
                         <div className="row">
                             <Subscription/>
+                            <ServerInfo/>
                             {/* <MyToken/>
                             <Bandwidth/>
                             <MyApiKey/> */}

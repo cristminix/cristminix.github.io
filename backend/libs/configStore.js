@@ -1,17 +1,21 @@
-const firebase = require('firebase');
+// const firebase = require('firebase');
 
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBpBE9bWyRzaJP8g1cjgGEuciTrvKJDBrE",
-  authDomain: "cristminix-c5687.firebaseapp.com",
-  projectId: "cristminix-c5687",
-  storageBucket: "cristminix-c5687.appspot.com",
-  messagingSenderId: "7808653581",
-  appId: "1:7808653581:web:688ab1ce82143a73d0f844",
-  measurementId: "G-T5KWSRLVM2"
-};
-const db = firebase.initializeApp(firebaseConfig);
-const firestore = db.firestore();
+// const firebaseConfig = {
+//   apiKey: "AIzaSyBpBE9bWyRzaJP8g1cjgGEuciTrvKJDBrE",
+//   authDomain: "cristminix-c5687.firebaseapp.com",
+//   projectId: "cristminix-c5687",
+//   storageBucket: "cristminix-c5687.appspot.com",
+//   messagingSenderId: "7808653581",
+//   appId: "1:7808653581:web:688ab1ce82143a73d0f844",
+//   measurementId: "G-T5KWSRLVM2"
+// };
+// const db = firebase.initializeApp(firebaseConfig);
+// const firestore = db.firestore();
+
+const firebase = require('../db');
+// const Student = require('../models/student');
+const firestore = firebase.firestore();
 
 
 const configStore = {
@@ -88,23 +92,4 @@ const configStore = {
   }
 }
 
-async function main(){  
-
-  try {
-    await configStore.init();
-    console.log(configStore.data);
-    await configStore.updateData({server_ip:"180.10.0.1"});
-    await configStore.getData();
-    console.log(configStore.data);
-
-        // await firestore.collection('config').doc().set({server_ip:'127.0.0.1'});
-        // const configs = await firestore.collection('configs');
-        
-    } catch (error) {
-        console.log(error.message);
-    }
-
-  process.exit(0);
-}
-
-main()
+module.exports = {configStore};

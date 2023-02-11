@@ -4,7 +4,9 @@
   "description": "Backend Express server for google colab",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "bore" : "node index.js & bore local 8088 --to=bore.pub > logs/bore.log"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "firebase": "^8.3.1"
+    "firebase": "^8.3.1",
+    "socket.io": "^4.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const logFile = path.resolve(__dirname, "logs/bore.log");
+const logFile = path.resolve(__dirname, "../logs/bore.log");
 if(fs.existsSync(logFile)){
 	fs.readFile(logFile, (err, data) => {
 	  if (!err && data) {
@@ -12,11 +12,8 @@ if(fs.existsSync(logFile)){
 	  		if(matches.length > 0){
 	  			const borePort = matches[0];
 	  			console.log(borePort);
-	  		}
-	  		
+	  		}	
 	  	}
-	    
-	    
 	  }
 	})
 }
