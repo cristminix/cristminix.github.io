@@ -51,8 +51,9 @@ io.on("connection", async(s) => {
 });
 
 async function main(){
-    console.log( await serverInfo.getPublicIp())
     await configStore.init();
+    console.log( await serverInfo.checkBorePort());
+
     httpServer.listen(config.port, () => console.log('App is listening on url http://localhost:' + config.port));
     // process.exit(0);
 }
