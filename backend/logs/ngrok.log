@@ -1,10 +1,53 @@
-t=2023-02-11T19:32:20+0700 lvl=info msg="no configuration paths supplied"
-t=2023-02-11T19:32:20+0700 lvl=info msg="using configuration at default config path" path=C:\\Users\\Damar\\AppData\\Local/ngrok/ngrok.yml
-t=2023-02-11T19:32:20+0700 lvl=info msg="open config file" path=C:\\Users\\Damar\\AppData\\Local\\ngrok\\ngrok.yml err=nil
-t=2023-02-11T19:32:20+0700 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
-t=2023-02-11T19:32:20+0700 lvl=info msg="tunnel session started" obj=tunnels.session
-t=2023-02-11T19:32:20+0700 lvl=info msg="client session established" obj=csess id=ed40dbc3b688
-t=2023-02-11T19:32:20+0700 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=http://localhost:8088 url=https://ed67-36-68-53-12.ap.ngrok.io
-t=2023-02-11T19:32:30+0700 lvl=info msg="received stop request" obj=app stopReq="{err:<nil> restart:false}"
-t=2023-02-11T19:32:30+0700 lvl=info msg="session closing" obj=tunnels.session err=nil
-t=2023-02-11T19:32:30+0700 lvl=info msg="accept failed" obj=csess id=ed40dbc3b688 err="reconnecting session closed"
+t=2023-02-12T03:29:33+0700 lvl=info msg="no configuration paths supplied"
+t=2023-02-12T03:29:33+0700 lvl=info msg="using configuration at default config path" path=C:\\Users\\Damar\\AppData\\Local/ngrok/ngrok.yml
+t=2023-02-12T03:29:33+0700 lvl=info msg="open config file" path=C:\\Users\\Damar\\AppData\\Local\\ngrok\\ngrok.yml err=nil
+t=2023-02-12T03:29:33+0700 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
+t=2023-02-12T03:29:35+0700 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2023-02-12T03:29:35+0700 lvl=info msg="client session established" obj=csess id=3675ea61dfee
+t=2023-02-12T03:29:35+0700 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=http://localhost:8088 url=https://e172-36-68-53-12.ap.ngrok.io
+t=2023-02-12T03:29:41+0700 lvl=info msg="join connections" obj=join id=74f5d7502c14 l=[::1]:8088 r=36.68.53.12:9992
+t=2023-02-12T03:29:41+0700 lvl=info msg="join connections" obj=join id=103b0784c02a l=[::1]:8088 r=36.68.53.12:9992
+t=2023-02-12T03:30:06+0700 lvl=info msg="join connections" obj=join id=cd3b2400437b l=[::1]:8088 r=36.68.53.12:9992
+t=2023-02-12T03:30:21+0700 lvl=info msg="join connections" obj=join id=dd0c3d640d0b l=[::1]:8088 r=36.68.53.12:9992
+t=2023-02-12T03:30:40+0700 lvl=info msg="join connections" obj=join id=1efd8c4838ba l=[::1]:8088 r=36.68.53.12:9626
+t=2023-02-12T03:30:40+0700 lvl=info msg="join connections" obj=join id=0ece03490e4d l=[::1]:8088 r=36.68.53.12:9626
+t=2023-02-12T03:31:05+0700 lvl=info msg="join connections" obj=join id=1f3f571b158f l=[::1]:8088 r=36.68.53.12:9626
+t=2023-02-12T03:31:25+0700 lvl=info msg="join connections" obj=join id=8d689cc93682 l=[::1]:8088 r=36.68.53.12:15379
+t=2023-02-12T03:31:30+0700 lvl=info msg="join connections" obj=join id=77c446368296 l=[::1]:8088 r=36.68.53.12:9626
+t=2023-02-12T03:31:56+0700 lvl=info msg="join connections" obj=join id=093897dabf0a l=[::1]:8088 r=36.68.53.12:9626
+t=2023-02-12T03:32:21+0700 lvl=info msg="join connections" obj=join id=7185bec7334d l=[::1]:8088 r=36.68.53.12:9626
+t=2023-02-12T03:32:44+0700 lvl=warn msg="failed to open private leg" id=491d3c8fb1d7 privaddr=localhost:8088 err="dial tcp [::1]:8088: connectex: No connection could be made because the target machine actively refused it."
+t=2023-02-12T03:32:47+0700 lvl=warn msg="failed to open private leg" id=75359262328c privaddr=localhost:8088 err="dial tcp [::1]:8088: connectex: No connection could be made because the target machine actively refused it."
+t=2023-02-12T03:32:48+0700 lvl=info msg="join connections" obj=join id=cc61ebc2c21b l=127.0.0.1:8088 r=36.68.53.12:9025
+t=2023-02-12T03:33:22+0700 lvl=warn msg="failed to open private leg" id=c2eb97685746 privaddr=localhost:8088 err="dial tcp [::1]:8088: connectex: No connection could be made because the target machine actively refused it."
+t=2023-02-12T03:33:24+0700 lvl=info msg="join connections" obj=join id=5066c3448631 l=127.0.0.1:8088 r=36.68.53.12:23828
+t=2023-02-12T03:34:38+0700 lvl=info msg="join connections" obj=join id=072c02a4d091 l=127.0.0.1:8088 r=36.68.53.12:19451
+t=2023-02-12T03:44:41+0700 lvl=info msg="join connections" obj=join id=2a45de640f52 l=[::1]:8088 r=36.68.53.12:17573
+t=2023-02-12T03:45:03+0700 lvl=info msg="join connections" obj=join id=0ebc73976bf5 l=[::1]:8088 r=36.68.53.12:2926
+t=2023-02-12T03:47:48+0700 lvl=info msg="join connections" obj=join id=abe46e197731 l=[::1]:8088 r=36.68.53.12:24421
+t=2023-02-12T03:50:37+0700 lvl=info msg="join connections" obj=join id=7f9ad9826852 l=[::1]:8088 r=36.68.53.12:17712
+t=2023-02-12T03:51:10+0700 lvl=info msg="join connections" obj=join id=5b32daee4b51 l=[::1]:8088 r=36.68.53.12:30385
+t=2023-02-12T03:51:10+0700 lvl=info msg="join connections" obj=join id=a673a6a9e478 l=[::1]:8088 r=36.68.53.12:30385
+t=2023-02-12T03:51:10+0700 lvl=info msg="join connections" obj=join id=3e6264f99d2f l=[::1]:8088 r=36.68.53.12:2535
+t=2023-02-12T09:57:40+0700 lvl=info msg="join connections" obj=join id=ff8374885d85 l=[::1]:8088 r=36.68.53.12:5942
+t=2023-02-12T09:57:40+0700 lvl=info msg="join connections" obj=join id=c4b29fb749e8 l=[::1]:8088 r=36.68.53.12:5942
+t=2023-02-12T09:57:40+0700 lvl=info msg="join connections" obj=join id=925f6b0301bd l=[::1]:8088 r=36.68.53.12:21892
+t=2023-02-12T11:30:30+0700 lvl=eror msg="heartbeat timeout, terminating session" obj=csess id=ac4c1355f3be clientid=06db1c32219717140e02cf1faad16d03
+t=2023-02-12T11:30:37+0700 lvl=eror msg="session closed, starting reconnect loop" obj=csess id=3675ea61dfee err="session closed"
+t=2023-02-12T11:30:47+0700 lvl=eror msg="failed to reconnect session" obj=csess id=3675ea61dfee err="dial tcp: lookup tunnel.ngrok.com: i/o timeout"
+t=2023-02-12T11:30:55+0700 lvl=eror msg="failed to reconnect session" obj=csess id=3675ea61dfee err="dial tcp: lookup tunnel.ngrok.com: no such host"
+t=2023-02-12T11:30:59+0700 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2023-02-12T11:30:59+0700 lvl=info msg="client session established" obj=csess id=3675ea61dfee
+t=2023-02-12T11:31:58+0700 lvl=info msg="join connections" obj=join id=8e8779d4e193 l=[::1]:8088 r=36.68.53.12:21686
+t=2023-02-12T11:31:59+0700 lvl=info msg="join connections" obj=join id=12fce2baa063 l=[::1]:8088 r=36.68.53.12:21686
+t=2023-02-12T11:31:59+0700 lvl=info msg="join connections" obj=join id=5c35dbe22a9a l=[::1]:8088 r=36.68.53.12:16399
+t=2023-02-12T14:15:48+0700 lvl=eror msg="heartbeat timeout, terminating session" obj=csess id=b4cfeb8c589a clientid=06db1c32219717140e02cf1faad16d03
+t=2023-02-12T14:15:48+0700 lvl=eror msg="session closed, starting reconnect loop" obj=csess id=3675ea61dfee err="session closed"
+t=2023-02-12T14:15:53+0700 lvl=eror msg="failed to reconnect session" obj=csess id=3675ea61dfee err="dial tcp: lookup tunnel.ngrok.com: no such host"
+t=2023-02-12T14:15:56+0700 lvl=eror msg="failed to reconnect session" obj=csess id=3675ea61dfee err=EOF
+t=2023-02-12T14:15:57+0700 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2023-02-12T14:15:57+0700 lvl=info msg="client session established" obj=csess id=3675ea61dfee
+t=2023-02-12T18:54:24+0700 lvl=info msg="join connections" obj=join id=ae4540abecc6 l=[::1]:8088 r=36.68.53.12:26187
+t=2023-02-12T18:54:25+0700 lvl=info msg="join connections" obj=join id=b3bd64dbe3f1 l=[::1]:8088 r=36.68.53.12:26187
+t=2023-02-12T18:54:25+0700 lvl=info msg="join connections" obj=join id=3f2becc0a051 l=[::1]:8088 r=36.68.53.12:17815
+t=2023-02-12T18:54:34+0700 lvl=info msg="join connections" obj=join id=d73f102304d7 l=[::1]:8088 r=36.68.53.12:22176
