@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+export PATH=$PATH:/content
+# echo "Running bore local $PORT --to=bore.pub with log : $LOG_PATH"
+bore local 22 --to=bore.pub 

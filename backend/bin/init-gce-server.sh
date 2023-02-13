@@ -26,3 +26,7 @@ bash "$SCRIPT_DIR/setup-localtonet.sh"
 # 06
 echo "00 Setup node"
 bash "$SCRIPT_DIR/setup-node.sh"
+
+# 07
+echo "00 Setup backend-node-modules"
+bash "$SCRIPT_DIR/setup-backend-node-modules.sh"
