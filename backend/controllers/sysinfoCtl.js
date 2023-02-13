@@ -3,7 +3,7 @@ const { promisify } = require('util');
 const execPromise = promisify(exec);
 const si = require('systeminformation');
 
-async function get_linux_disk(req, res, next) {
+async function getDiskInfo(req, res, next) {
     try {
         const result = await execPromise(`df ~`)
         const lines = result.stdout.split("\n");
@@ -22,9 +22,31 @@ async function get_linux_disk(req, res, next) {
         res.status(500).send(err.message);
     }
 }
+// Allocating os module
+const os = require('os');
+
+function getServerUptime(req,res, next){
+    // Printing os.uptime() value
+    var ut_sec = os.uptime();
+    var ut_min = ut_sec/60;
+    var ut_hour = ut_min/60;
+       
+    ut_sec = Math.floor(ut_sec);
+    ut_min = Math.floor(ut_min);
+    ut_hour = Math.floor(ut_hour);
+      
+    ut_hour = ut_hour%60;
+    ut_min = ut_min%60;
+    ut_sec = ut_sec%60;
+   
+    const row = {ut_hour,ut_min,ut_sec}; 
+    res.status(200).json(rows);
+
+}  
+
 const getBasicInfo = async(req, res, next)=>{
     let basicInfo = {};
-    const available_types = "os,mb,cpu,mem,disk,gpu,net,ping,proc".split(",");
+    const available_types = "os,mb,cpu,mem,disk,gpu,net,ping,proc,uptime".split(",");
     let t = req.query.t || 'none';
 
     
@@ -36,7 +58,10 @@ const getBasicInfo = async(req, res, next)=>{
             t="system"
         if(t=="disk"){
             t="fsSize"
-            return get_linux_disk(req,res, next)
+            return getDiskInfo(req,res, next)
+        }
+        if(t=="uptime"){
+            return getServerUptime(req,res, next)
         }
         if(t=="gpu")
             t="graphics"

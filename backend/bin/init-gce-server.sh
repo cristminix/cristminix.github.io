@@ -16,7 +16,7 @@ bash "$SCRIPT_DIR/setup-bore.sh"
 
 # 04
 echo "00 Setup ngrok"
-bash "$SCRIPT_DIR/setup-bore.sh"
+bash "$SCRIPT_DIR/setup-ngrok.sh"
 
 
 # 05
