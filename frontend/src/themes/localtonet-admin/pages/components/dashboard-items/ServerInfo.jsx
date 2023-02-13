@@ -1,17 +1,16 @@
-import React,{Component, useState} from "react";
+import React,{Component, useState,useEffect} from "react";
 import { useBetween } from "use-between";
-
+import { getServerEndpoint } from "../../../../../libs/utils";
 import db from "../../../../../libs/db";
 import socketClient from "../../../../../libs/socketClient";
+import useServerCfgState from "./useServerCfgState";
 import useSocketState from "./useSocketState";
 const useSharedSocketState = () => useBetween(useSocketState);
+const useSharedServerCfgState = () => useBetween(useServerCfgState);
 
-
-
-let dontRunTwice = true;
-let dontRunTwice2 = true;
 export default function ServerInfo (){
     const [serverConfig,setServerConfig] = useState("");
+    const {serverCfg,setServerCfg} = useSharedServerCfgState();
     const {socketConnected,setSocketConnected} = useSharedSocketState();
     async function getServiceMap(){
         try{
@@ -50,13 +49,8 @@ export default function ServerInfo (){
               initSocket(_serverConfig);
    
               setServerConfig(_serverConfig);
-        //       if(!dontRunTwice2)
-        //       return;
-        //   dontRunTwice2=false;
-              setTimeout(()=>{
-                getConfigs().then(r=>{});
-              },5000);
-        
+              setServerCfg(_serverConfig);
+
           }
         } catch (error) {
             console.log(error.message);
@@ -64,19 +58,8 @@ export default function ServerInfo (){
   
     }
     function initSocket(_serverConfig){
-        let url;
-        if(_serverConfig.serviceMap.backend == "bore"){
-            url = `ws://bore.pub:${_serverConfig.config.bore_port}`;
-        }
-        else if(_serverConfig.serviceMap.backend == "ngrok"){
-            url = `${_serverConfig.config.ngrok_url}`;
-        }
-        else if(_serverConfig.serviceMap.backend == "localtonet"){
-            url = `https://${_serverConfig.config.localtonet_host}`;
-        }
-        // const serverInfo = _configArray[0];
+        let url = getServerEndpoint(_serverConfig);
         
-        // console.log(`initSocket ${url} == ${socketClient.url}`)
         if(socketClient.url != url){
             console.log(`initSocket ${url}`)
             socketClient.changeUrl(url);
@@ -89,35 +72,21 @@ export default function ServerInfo (){
         }
 
     }
-    async function componentDidMount(){
+    useEffect(() => {
+        const timer = setInterval(()=>{
+            getConfigs().then(r=>{});
+        },5000);
 
-        
-        if(dontRunTwice){
-            console.log(`please ${dontRunTwice}`);
-            await getConfigs()
-           
-            // socketClient.changeUrl(socketClient.url);
-            // console.log(socketClient)
-
+        return () => {
+            clearInterval(timer);
         }
-        dontRunTwice = false;
-    }
-    
-    componentDidMount()
+    }, []);
+
     
     let serverInfoTag = (<tr><td>No Results</td></tr>);
     if(serverConfig.config){
         // serverInfoTag = configsArray.map((row)=>{
-            let serverUrl;
-            if(serverConfig.serviceMap.backend == "bore"){
-                serverUrl = `http://bore.pub:${serverConfig.config.bore_port}`;
-            }
-            else if(serverConfig.serviceMap.backend == "ngrok"){
-                serverUrl = `${serverConfig.config.ngrok_url}`;
-            }
-            else if(serverConfig.serviceMap.backend == "localtonet"){
-                serverUrl = `https://${serverConfig.config.localtonet_host}`;
-            }
+            let serverUrl = getServerEndpoint(serverConfig);
             // serverUrl = socketConnected ? `http://bore.pub:${row.bore_port}` : "N/A";
             serverInfoTag = (<>
                 <tr>
@@ -140,7 +109,7 @@ export default function ServerInfo (){
     }
     return(
         <>
-        <div className="col-xl mt-2">
+        <div className="col-xl-12 mt-2">
         <div className="card card-flush">
             <div className="card-header border-0 pt-0">
                 <div className="card-title">

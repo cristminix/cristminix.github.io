@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "bore": "node index.js & bore local 8088 --to=bore.pub > logs/bore.log"
+    "dev": "nodemon index.js",
+    "tunnel": "bash bin/start-server.sh",
+    "serve" : "concurrently --kill-others \"npm run tunnel\" \"npm run dev\""
   },
   "keywords": [],
   "author": "",
@@ -21,6 +22,7 @@
     "systeminformation": "^5.17.9"
   },
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "nodemon": "^2.0.20"
   }
 }

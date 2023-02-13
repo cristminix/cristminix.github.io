@@ -6,7 +6,7 @@ const config = require('./config');
 
 const studentRoutes = require('./routes/student-routes');
 const serverConfigRoutes = require('./routes/server-config-routes');
-
+const sysinfoRoutes = require("./routes/sysinfo-routes");
 const { Server } = require("socket.io");
 const { createServer } = require("http");
 const fs = require("fs");
@@ -35,6 +35,7 @@ async function cpuData() {
 }
 app.use('/api', studentRoutes.routes);
 app.use('/api', serverConfigRoutes.routes);
+app.use('/api', sysinfoRoutes.routes);
 app.get('/', async(req, res) => {
     res.send(await cpuData());
 });

@@ -34,6 +34,9 @@ const socketClient = {
         }
     },
     destroy : ()=>{
+        if(!socketClient.instance){
+            return
+        }
         console.log("socketClient.destroy()")
 
         try{

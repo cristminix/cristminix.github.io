@@ -4,7 +4,7 @@ export default function Subscription(){
 
     return(
         <>
-        <div className="col-xl-full col-md-6 mt-2">
+        <div className="col-xl-4 col-md-6 mt-2">
         <div className="card card-h-100">
             <div className="card-body">
                 <div className="row">

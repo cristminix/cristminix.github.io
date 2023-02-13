@@ -6,14 +6,11 @@ import useSocketState from "./useSocketState";
 const useSharedSocketState = () => useBetween(useSocketState);
 let dontRunTwice = 1;
 export default function SocketClientInfo(){
-
-   
-
-        const {socketConnected} = useSharedSocketState();
+    const {socketConnected} = useSharedSocketState();
         
     return(
         <>
-        <div className="col-xl-full col-md-6 mt-2">
+        <div className="col-xl-4 col-md-6 mt-2">
         <div className="card card-h-100">
             <div className="card-body">
                 <div className="row">
@@ -26,8 +23,6 @@ export default function SocketClientInfo(){
                                 ? (<i style={{fontSize:"2em",color:"green"}} className="fas fa-toggle-on"></i>)
                                 : (<i style={{fontSize:"2em",color:"red"}} className="fas fa-toggle-off"></i>)
                         }
-                    
-                    
                     </div>
                 </div>
             </div>
