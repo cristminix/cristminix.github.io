@@ -1,4 +1,8 @@
 import { Component } from "react";
+import { useBetween } from "use-between";
+import useSessionState from "./shared/useSessionState";
+const useSharedSessionState = () => useBetween(useSessionState);
+
 import {
     HashRouter as Router,
     Routes,
@@ -16,8 +20,10 @@ let session = {
 import Template from "./pages/Template";
 import TemplateLogin  from "./templates/login/TemplateLogin";
 function App(){
+    const {isLogedIn,setIsLogedIn} = useSharedSessionState();
     let TemplateApp;
-    if(session.isLogedIn){
+    setIsLogedIn(localStorage['isLogedIn'])
+    if(isLogedIn == "true"){
         TemplateApp = Template
     }else{
         TemplateApp = TemplateLogin

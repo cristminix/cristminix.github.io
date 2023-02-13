@@ -66,7 +66,7 @@ export default function SysInfo(){
                     <span className="text-muted mb-3 d-block text-truncate">System Info</span>
                 </div>
                 <div className="row">
-                    <div class="max-w-7xl mx-auto grid grid-cols-12 ">
+                    <div className="max-w-7xl mx-auto grid grid-cols-12 ">
                          <div className="col-span-2 row-span-2 text-center pt-0"><i className="fas fa-hdd" style={{fontSize:"1em"}}></i></div>
                          <div className="col-span-10">
                             <div>{diskFs}</div>

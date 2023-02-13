@@ -12,6 +12,7 @@ import "../assets/plugins/custom/top-notification-bar-topper/css/topper.css";
 import "../assets/css/admin.css"
 
 export default function Template(){
+    document.title = "Dashboard";
         return(
 <>
     <div className="page d-flex flex-row flex-column-fluid">
