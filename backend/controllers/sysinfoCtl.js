@@ -1,20 +1,27 @@
-// async function cpuData() {
-//     try {
-//         const data = await si.cpu();
-//         const info = ('- manufacturer: ' + data.manufacturer)
-//         +('- brand: ' + data.brand)
-//         +('- speed: ' + data.speed)
-//         +('- cores: ' + data.cores)
-//         +('- physical cores: ' + data.physicalCores)
-//         +('...');
-
-//         return info;
-//     } catch (e) {
-//         console.log(e)
-//     }
-// }
+const { exec } = require('child_process');
+const { promisify } = require('util');
+const execPromise = promisify(exec);
 const si = require('systeminformation');
 
+async function get_linux_disk(req, res, next) {
+    try {
+        const result = await execPromise(`df ~`)
+        const lines = result.stdout.split("\n");
+        const keys = lines[0].split(/\s+/ig);
+        // Skip the header row when assigning objects..
+        const rows = lines.slice(1).map(line => {
+            // Parse each line..
+            const values = line.split(/\s+/ig);
+            return keys.reduce((o, k, index) => {
+                o[k] = values[index];
+                return o;
+            }, {})
+        });
+        res.status(200).json(rows);
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+}
 const getBasicInfo = async(req, res, next)=>{
     let basicInfo = {};
     const available_types = "os,mb,cpu,mem,disk,gpu,net,ping,proc".split(",");
@@ -27,8 +34,10 @@ const getBasicInfo = async(req, res, next)=>{
             t = "osInfo"
         if(t=="mb")
             t="system"
-        if(t=="disk")
+        if(t=="disk"){
             t="fsSize"
+            return get_linux_disk(req,res, next)
+        }
         if(t=="gpu")
             t="graphics"
         if(t=="net")

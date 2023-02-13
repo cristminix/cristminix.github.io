@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { useBetween } from "use-between";
 import { getServerEndpoint,formatBytes } from "../../../../../libs/utils";
 import useServerCfgState from "./useServerCfgState";
@@ -6,21 +6,54 @@ const useSharedServerCfgState = () => useBetween(useServerCfgState);
 
 export default function SysInfo(){
     const {serverCfg,setServerCfg} = useSharedServerCfgState();
-    const serverEnpoint = getServerEndpoint(serverCfg);
 
     const [du,setDu] = useState("");
-    fetch(`${serverEnpoint}/api/sysinfo/getBasicInfo?t=disk`,{headers:{'ngrok-skip-browser-warning':1}})
-    .then(r=>{return r.json()})
-    .then(r=>setDu(r));
+   
+    let serverEndpoint;
+    serverEndpoint = getServerEndpoint(serverCfg);
+    function updateDiskInfo(){
+        fetch(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=disk`,{headers:{'ngrok-skip-browser-warning':1}})
+            .then(r=>{
+                try{
+                    return r.json()
+                }catch(e){
+                    return {}
+                }
+            })
+            .then(r=>setDu(r));
+    }
+    useEffect(() => {
+
+        const timer = setInterval(()=>{
+            updateDiskInfo()
+        },5000);
+
+        return () => {
+            clearInterval(timer);
+        }
+    }, [serverEndpoint]);
     /*
     {"data":[{"fs":"C:","type":"NTFS","size":128033222656,"used":85794418688,"available":42238803968,"use":67.01,"mount":"C:","rw":true}]}
+    df
+    [
+    {
+        "Filesystem": "/dev/sda1",
+        "1K-blocks": "10253588",
+        "Used": "7971516",
+        "Available": "1741504",
+        "Use%": "83%",
+        "Mounted": "/"
+    }
+]
     */
-    let diskSize=0,diskFree=0,diskUsage=0;
+    let diskSize=0,diskFree=0,diskUsage=0,diskPctg,diskFs="";
     try{
-        const data = du.data[0];
-        diskSize = data.size;
-        diskFree=data.available;
-        diskUsage=data.used;
+        const data = du[0];
+        diskFs = data["Filesystem"];
+        diskSize = data["1K-blocks"];
+        diskFree=data.Available;
+        diskUsage=data.Used;
+        diskPctg=data["Use%"];
     }catch(e){
 
     }
@@ -33,11 +66,17 @@ export default function SysInfo(){
                     <span className="text-muted mb-3 d-block text-truncate">System Info</span>
                 </div>
                 <div className="row">
-                    <h4>
-                        <div>Disk size : {formatBytes(diskSize)}</div>
-                        <div>Usage:{formatBytes(diskUsage)}</div>
-                        <div>Free:{formatBytes(diskFree)}</div>
-                    </h4>
+                    <div class="max-w-7xl mx-auto grid grid-cols-12 ">
+                         <div className="col-span-2 row-span-2 text-center pt-0"><i className="fas fa-hdd" style={{fontSize:"1em"}}></i></div>
+                         <div className="col-span-10">
+                            <div>{diskFs}</div>
+                            <div className="w-full bg-gray-200 h-1">
+                              <div className="bg-blue-600 h-1" style={{width: diskPctg}}></div>
+                            </div>
+                            <div>{formatBytes(diskFree,true,1)} free of {formatBytes(diskSize,true,0)}</div>
+
+                        </div> 
+                   </div>
                 </div>
             </div>
         </div>
