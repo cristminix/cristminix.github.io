@@ -3,7 +3,21 @@ import { useBetween } from "use-between";
 import { getServerEndpoint,formatBytes } from "../../../../../libs/utils";
 import useServerCfgState from "./useServerCfgState";
 const useSharedServerCfgState = () => useBetween(useServerCfgState);
+import AppleSvgIcon from "../svg-icons/AppleSvgIcon";
+import UbuntuSvgIcon from "../svg-icons/UbuntuSvgIcon";
+import LinuxSvgIcon from "../svg-icons/LinuxSvgIcon";
+import WindowsSvgIcon from "../svg-icons/WindowsSvgIcon";
 
+const osIcons = {
+    apple : AppleSvgIcon,
+    darwin : AppleSvgIcon,
+    ubuntu : UbuntuSvgIcon,
+    linux : LinuxSvgIcon,
+    windows : WindowsSvgIcon,
+    debian : LinuxSvgIcon,
+    redhat : LinuxSvgIcon,
+    centos : LinuxSvgIcon
+}
 export default function SysInfo(){
     const {serverCfg,setServerCfg} = useSharedServerCfgState();
 
@@ -122,7 +136,7 @@ export default function SysInfo(){
         cpuCore = cpu.core;
         cpuSpeed = cpu.speed * 1024;
     }catch(e){}
-    let osDistro,osLogo,osPlatform,osArch,osHost,osKernel;
+    let osDistro,osLogo,osPlatform,osArch,osHost,osKernel,OsSvgIcon="",osSvgIcon;
     try{
         const data = osInfo.data;
         osDistro = data.distro;
@@ -130,6 +144,11 @@ export default function SysInfo(){
         osHost = data.hostname;
         osKernel = data.kernel;
         osLogo = data.logofile;
+
+        if(typeof osIcons[osLogo] != "undefined"){
+            const OsSvgIcon = osIcons[osLogo];
+            osSvgIcon = (<OsSvgIcon viewBox="0 0 28 28" width={18} style={{marginLeft:"8px"}} fill="#aaa"/>); 
+        }
     }catch(e){}
     return(
         <>
@@ -139,7 +158,17 @@ export default function SysInfo(){
                 <div className="row">
                     <span className="text-muted mb-3 d-block text-truncate">System Info</span>
                 </div>
-                
+                <div className="row mb-1">
+                    <div className="max-w-7xl mx-auto grid grid-cols-12 ">
+                         <div className="col-span-2 row-span-2 text-center pt-0">{osSvgIcon}</div>
+                         <div className="col-span-10">
+                            <div>{osPlatform}</div>
+                              <div>{osDistro} {osArch}</div>
+                            <div>{osHost} {osKernel}</div>
+
+                        </div> 
+                   </div>
+                </div>
 
                 <div className="row mb-1">
                     <div className="max-w-7xl mx-auto grid grid-cols-12 ">
@@ -180,17 +209,7 @@ export default function SysInfo(){
                         </div> 
                    </div>
                 </div>
-                <div className="row mb-1">
-                    <div className="max-w-7xl mx-auto grid grid-cols-12 ">
-                         <div className="col-span-2 row-span-2 text-center pt-0"><i className={`fas fa-${osLogo}`} style={{fontSize:"1em"}}></i></div>
-                         <div className="col-span-10">
-                            <div>{osPlatform}</div>
-                              <div>{osDistro} {osArch}</div>
-                            <div>{osHost} {osKernel}</div>
-
-                        </div> 
-                   </div>
-                </div>
+                
                 <div className="row mb-1">
                     <div className="max-w-7xl mx-auto grid grid-cols-12 ">
                          <div className="col-span-2 row-span-2 text-center pt-0"><i className={`fas fa-hourglass-2`} style={{fontSize:"1em"}}></i></div>
