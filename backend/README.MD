@@ -34,6 +34,7 @@ This item must be installed on your local machine
 ***Configuring Local Machine***
 
 - Installing Required Software
+
 - Setup Tunnel
     - Setup Ngrok Tunnel
         - Download Ngrok tunnel app
@@ -48,6 +49,9 @@ This item must be installed on your local machine
     - Getting SSL to work
     - Configuring Ngrok reverse proxy API
     - Testing Ngrok Reverse Proxy
+- Configure firestore for realtime database
+- Setup Local Server Development
+    
 - Setup GCE On Colab
     - Install tampermonkey extension
     - Load google colab project template

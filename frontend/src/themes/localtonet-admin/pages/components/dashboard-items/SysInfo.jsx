@@ -7,7 +7,11 @@ const useSharedServerCfgState = () => useBetween(useServerCfgState);
 export default function SysInfo(){
     const {serverCfg,setServerCfg} = useSharedServerCfgState();
 
+    const [uptime,setUptime] = useState("");
     const [du,setDu] = useState("");
+    const [mem,setMem] = useState("");
+    const [cpu,setCpu] = useState("");
+    const [osInfo,setOsInfo] = useState("");
    
     let serverEndpoint;
     serverEndpoint = getServerEndpoint(serverCfg);
@@ -22,30 +26,78 @@ export default function SysInfo(){
             })
             .then(r=>setDu(r));
     }
+    function updateOsInfo(){
+        fetch(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=os`,{headers:{'ngrok-skip-browser-warning':1}})
+            .then(r=>{
+                try{
+                    return r.json()
+                }catch(e){
+                    return {}
+                }
+            })
+            .then(r=>setOsInfo(r));
+    }
+    function updateCpuInfo(){
+        fetch(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=cpu`,{headers:{'ngrok-skip-browser-warning':1}})
+            .then(r=>{
+                try{
+                    return r.json()
+                }catch(e){
+                    return {}
+                }
+            })
+            .then(r=>setCpu(r));
+    }
+    function updateMemInfo(){
+        fetch(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=mem`,{headers:{'ngrok-skip-browser-warning':1}})
+            .then(r=>{
+                try{
+                    return r.json()
+                }catch(e){
+                    return {}
+                }
+            })
+            .then(r=>setMem(r));
+    }
+    function updateUptime(){
+        fetch(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=uptime`,{headers:{'ngrok-skip-browser-warning':1}})
+            .then(r=>{
+                try{
+                    return r.json()
+                }catch(e){
+                    return {}
+                }
+            })
+            .then(r=>setUptime(r));
+    }
     useEffect(() => {
 
         const timer = setInterval(()=>{
             updateDiskInfo()
+            updateMemInfo()
+            updateCpuInfo()
+            updateUptime()
+
         },5000);
 
         return () => {
             clearInterval(timer);
         }
     }, [serverEndpoint]);
-    /*
-    {"data":[{"fs":"C:","type":"NTFS","size":128033222656,"used":85794418688,"available":42238803968,"use":67.01,"mount":"C:","rw":true}]}
-    df
-    [
-    {
-        "Filesystem": "/dev/sda1",
-        "1K-blocks": "10253588",
-        "Used": "7971516",
-        "Available": "1741504",
-        "Use%": "83%",
-        "Mounted": "/"
-    }
-]
-    */
+
+    useEffect(()=>{
+        updateOsInfo()
+
+        const timer = setInterval(()=>{
+            updateOsInfo()
+            
+        },15000*2);
+
+        return () => {
+            clearInterval(timer);
+        }
+    }, [serverEndpoint]);
+    
     let diskSize=0,diskFree=0,diskUsage=0,diskPctg,diskFs="";
     try{
         const data = du[0];
@@ -54,9 +106,31 @@ export default function SysInfo(){
         diskFree=data.Available;
         diskUsage=data.Used;
         diskPctg=data["Use%"];
-    }catch(e){
+    }catch(e){}
 
-    }
+    let memSize,memFree,memPctg;
+    try{
+        memSize = mem.MemTotal;
+        memFree = mem.MemFree;
+        memPctg = Math.ceil(memFree/memSize * 100);
+    }catch(e){}
+
+    let cpuModel,cpuSpeed,cpuLoad,cpuCore;
+    try{
+        cpuModel = cpu.model;
+        cpuLoad = cpu.load;
+        cpuCore = cpu.core;
+        cpuSpeed = cpu.speed * 1024;
+    }catch(e){}
+    let osDistro,osLogo,osPlatform,osArch,osHost,osKernel;
+    try{
+        const data = osInfo.data;
+        osDistro = data.distro;
+        osArch = data.arch;
+        osHost = data.hostname;
+        osKernel = data.kernel;
+        osLogo = data.logofile;
+    }catch(e){}
     return(
         <>
         <div className="col-xl-4 col-md-6 mt-2">
@@ -65,15 +139,63 @@ export default function SysInfo(){
                 <div className="row">
                     <span className="text-muted mb-3 d-block text-truncate">System Info</span>
                 </div>
+                
+
+                <div className="row mb-1">
+                    <div className="max-w-7xl mx-auto grid grid-cols-12 ">
+                         <div className="col-span-2 row-span-2 text-center pt-0"><i className="fas fa-microchip" style={{fontSize:"1em"}}></i></div>
+                         <div className="col-span-10">
+                            <div>{cpuModel}</div>
+                            <div className="w-full bg-gray-200 h-1">
+                              <div className="bg-blue-600 h-1" style={{width: cpuLoad}}></div>
+                            </div>
+                            <div>{formatBytes(cpuSpeed,true,1).replace(/GB/,'Ghz')} Core: {cpuCore}</div>
+
+                        </div> 
+                   </div>
+                </div>
+                <div className="row mb-1">
+                    <div className="max-w-7xl mx-auto grid grid-cols-12 ">
+                         <div className="col-span-2 row-span-2 text-center pt-0"><i className="fas fa-memory" style={{fontSize:"1em"}}></i></div>
+                         <div className="col-span-10">
+                            <div>{'RAM'}</div>
+                            <div className="w-full bg-gray-200 h-1">
+                              <div className="bg-blue-600 h-1" style={{width: `${memPctg}%`}}></div>
+                            </div>
+                            <div>{formatBytes(memFree,true,1)} free of {formatBytes(memSize,true,0)}</div>
+
+                        </div> 
+                   </div>
+                </div>
                 <div className="row">
                     <div className="max-w-7xl mx-auto grid grid-cols-12 ">
                          <div className="col-span-2 row-span-2 text-center pt-0"><i className="fas fa-hdd" style={{fontSize:"1em"}}></i></div>
                          <div className="col-span-10">
-                            <div>{diskFs}</div>
+                            <div>HDD {diskFs}</div>
                             <div className="w-full bg-gray-200 h-1">
                               <div className="bg-blue-600 h-1" style={{width: diskPctg}}></div>
                             </div>
                             <div>{formatBytes(diskFree,true,1)} free of {formatBytes(diskSize,true,0)}</div>
+
+                        </div> 
+                   </div>
+                </div>
+                <div className="row mb-1">
+                    <div className="max-w-7xl mx-auto grid grid-cols-12 ">
+                         <div className="col-span-2 row-span-2 text-center pt-0"><i className={`fas fa-${osLogo}`} style={{fontSize:"1em"}}></i></div>
+                         <div className="col-span-10">
+                            <div>{osPlatform}</div>
+                              <div>{osDistro} {osArch}</div>
+                            <div>{osHost} {osKernel}</div>
+
+                        </div> 
+                   </div>
+                </div>
+                <div className="row mb-1">
+                    <div className="max-w-7xl mx-auto grid grid-cols-12 ">
+                         <div className="col-span-2 row-span-2 text-center pt-0"><i className={`fas fa-hourglass-2`} style={{fontSize:"1em"}}></i></div>
+                         <div className="col-span-10">
+                            <div>UP {uptime.ut_hour} hr {uptime.ut_min} min {uptime.ut_sec} sec</div>
 
                         </div> 
                    </div>

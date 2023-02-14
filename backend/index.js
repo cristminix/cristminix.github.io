@@ -36,7 +36,7 @@ async function cpuData() {
 app.use('/api', studentRoutes.routes);
 app.use('/api', serverConfigRoutes.routes);
 app.use('/api', sysinfoRoutes.routes);
-app.get('/', async(req, res) => {
+app.get('/proxy/*', async(req, res) => {
     res.send(await cpuData());
 });
 const httpServer = createServer(app);
