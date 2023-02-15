@@ -119,7 +119,32 @@ const getBasicInfo = async(req, res, next)=>{
     // basicInfo.os = await si.osInfo();
     res.status(200).send(basicInfo);
 }
+const getServiceInfo = async(req, res, next)=>{
+    let serviceInfo = {};
+    const available_types = "dropbear,nginx".split(",");
+    let t = req.query.t || 'none';
+    if(available_types.includes(t)){
+        if(t=="dropbear"){
+            const psCommand = "ps aux|grep dropbear";
+            let shellBuffers = `
+root        4085  0.0  0.0   4568  1996 ?        Ss   02:20   0:00 /usr/sbin/dropbear -p 22 -W 65536
+root      133114  0.0  0.0   4648  2736 ?        Ss   09:23   0:00 /usr/sbin/dropbear -p 22 -W 65536
+root      136518  0.0  0.0   3312   720 pts/1    S+   09:33   0:00 grep --color=auto dropbear
+            `
+            shellBuffers=shellBuffers.split("\n").filter(line=>{return line.trim().length>0})
+            shellBuffers = shellBuffers.map(b=>{const input=b.replace(/\s+/g," ").split(" "); return {user:input[0],bin:input[10],pid:input[1],port:input[12]} })
 
+            res.status(200).send(shellBuffers);
+        }
+    }
+    res.status(200).send(serviceInfo);
+
+}
+const serviceUtil = async(req, res, next)=>{
+
+}
 module.exports = {
-    getBasicInfo
+    getBasicInfo,
+    getServiceInfo,
+    serviceUtil
 }

@@ -1,14 +1,15 @@
 import React from "react";
 import logoPng from "../../assets/media/logos/logo.png"
+import LogoSvgIcon from "./svg-icons/LogoSvgIcon"
 export default class Logo extends React.Component{
 
     render(){
         return(
             <>
             <div className="aside-logo flex-column-auto px-9 mb-9 mb-lg-17 mx-auto" id="kt_aside_logo">
-                    <a href="/">
-                        <img alt="Logo" src={logoPng} className="h-80px logo theme-light-show" />
-                        <img alt="Logo" src={logoPng} className="h-80px logo theme-dark-show" />
+                    <a href="/" className="-mt-8 p-0 h-120px block overflow-hidden">
+                        <LogoSvgIcon className="h-120px logo theme-light-show" viewBox="0 0 600 512"/>
+                        <LogoSvgIcon className="h-120px logo theme-dark-show"  viewBox="0 0 512 512"/>
                     </a>
                 </div>
             </>
