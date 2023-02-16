@@ -7,6 +7,7 @@ const config = require('./config');
 const studentRoutes = require('./routes/student-routes');
 const serverConfigRoutes = require('./routes/server-config-routes');
 const sysinfoRoutes = require("./routes/sysinfo-routes");
+const proxyRoutes = require("./routes/proxy-routes");
 const { Server } = require("socket.io");
 const { createServer } = require("http");
 const fs = require("fs");
@@ -18,6 +19,12 @@ app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 const si = require('systeminformation');
+
+const {DISABLE_TUNNEL} = process.env;
+// console.log(process.env)
+// if(DISABLE_TUNNEL){
+//     process.exit(1);
+// }
 
 async function cpuData() {
     try {
@@ -34,12 +41,11 @@ async function cpuData() {
         console.log(e)
     }
 }
+app.use('/', proxyRoutes.routes);
 app.use('/api', studentRoutes.routes);
 app.use('/api', serverConfigRoutes.routes);
 app.use('/api', sysinfoRoutes.routes);
-app.get('/proxy/*', async(req, res) => {
-    res.send(await cpuData());
-});
+ 
 const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
@@ -84,6 +90,10 @@ async function checkLocaltonetHost(){
 }
 
 async function checkServiceMap(){
+    if(DISABLE_TUNNEL){
+        console.log("Tunnel is disabled");
+        return;
+    }
     let _config = await supabaseDb.getTunnelConfig();
     // console.log(_config.config)
     // _config = _config.config;
