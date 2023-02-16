@@ -7,12 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js",
     "tunnel": "bash bin/start-server.sh",
-    "serve" : "concurrently --kill-others \"npm run tunnel\" \"npm run dev\""
+    "serve": "concurrently --kill-others \"npm run tunnel\" \"npm run dev\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@supabase/supabase-js": "^2.8.0",
     "body-parser": "^1.20.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",

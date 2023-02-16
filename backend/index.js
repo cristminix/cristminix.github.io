@@ -13,6 +13,7 @@ const fs = require("fs");
 const path = require("path");
 const app = express();
 const TunnelConf = require("./models/TunnelConf");
+const {supabaseDb} = require("./libs/supabase");
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
@@ -61,7 +62,8 @@ async function checkNgrokUrl(){
     const server_ip = await serverInfo.getPublicIp();
     const ngrok_port = config.port;
     const ngrok_url = await serverInfo.getNgrokUrl();
-    await TunnelConf.updateConfig({ngrok_url,server_ip,ngrok_port});
+    // await TunnelConf.updateConfig({ngrok_url,server_ip,ngrok_port});
+    await supabaseDb.updateTunnelConfig("config",{ngrok_url,server_ip,ngrok_port});
     console.log(ngrok_url)
     return ngrok_url;
 
@@ -71,14 +73,24 @@ async function checkLocaltonetHost(){
     const server_ip = await serverInfo.getPublicIp();
     const localtonet_port = config.port;
 
-    await TunnelConf.updateConfig({server_ip,localtonet_port});
-    const _config = await TunnelConf.getConfig();
+    // await TunnelConf.updateConfig({server_ip,localtonet_port});
+    await supabaseDb.updateTunnelConfig("config",{server_ip,localtonet_port});
+
+    // const _config = await TunnelConf.getConfig();
+    let _config = await supabaseDb.getTunnelConfig();
+    _config = _config.config;
     return _config.localtonet_host;
 
 }
 
 async function checkServiceMap(){
-    const serviceMap = await TunnelConf.getServiceMap();
+    let _config = await supabaseDb.getTunnelConfig();
+    // console.log(_config.config)
+    // _config = _config.config;
+
+    const serviceMap = _config.service_map;
+    // console.log(serviceMap);
+
     const map = serviceMap.backend;
     let ret = {map};
     switch(map){
@@ -92,6 +104,7 @@ async function checkServiceMap(){
             ret.data = await checkBorePort();
             break;
     }
+    // console.log(_config);
     console.log(ret);
     return ret;
 }

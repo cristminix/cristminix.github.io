@@ -1,13 +1,21 @@
 import React,{Component, useState,useEffect} from "react";
 import { useBetween } from "use-between";
 import { getServerEndpoint } from "../../../../../libs/utils";
-import db from "../../../../../libs/db";
+// import db from "../../../../../libs/db";
 import socketClient from "../../../../../libs/socketClient";
 import useServerCfgState from "./useServerCfgState";
 import useSocketState from "./useSocketState";
 const useSharedSocketState = () => useBetween(useSocketState);
 const useSharedServerCfgState = () => useBetween(useServerCfgState);
+import { createClient } from '@supabase/supabase-js'
 
+const supabase = createClient("https://iorbwclbyciwepqurori.supabase.co", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlvcmJ3Y2xieWNpd2VwcXVyb3JpIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzY0NzY1MTIsImV4cCI6MTk5MjA1MjUxMn0.ZMdiyphm-5319LuB37tu2tWxUQBG4Rfcun61hLOak3A")
+
+async function getServerConfig() {
+    const serverConfig = await supabase.from('tunnel_config').select()
+    // console.log(countries)
+    return serverConfig.data[0];
+}
 export default function ServerInfo (){
     const [serverConfig,setServerConfig] = useState("");
     const {serverCfg,setServerCfg} = useSharedServerCfgState();
@@ -24,24 +32,27 @@ export default function ServerInfo (){
         }
         return null;
     }
-    async function getTunnelConfig(){
-        try{
-            const configs = await db.collection('tunnel_config').doc('config');
-            const data = await configs.get();
-            if(data.exists){
-                return data.data();
-            }
-        }catch(e){
+    // async function getTunnelConfig(){
+    //     try{
+    //         // const configs = await db.collection('tunnel_config').doc('config');
+    //         // const data = await configs.get();
+    //         // if(data.exists){
+    //         //     return data.data();
+    //         // }
+    //         let tunnelConfig = await getTunnelConfig();
+    //         return tunnelConfig;
+    //     }catch(e){
     
-        }
-        return null;
-    }
+    //     }
+    //     return null;
+    // }
     async function getConfigs(){
         
         console.log("GET CONFIG")
         try {
-          const serviceMap = await getServiceMap();  
-          const config = await getTunnelConfig();
+          const tunnelConfig = await getServerConfig();  
+          const serviceMap = tunnelConfig.service_map;  
+          const config = tunnelConfig.config;
         //   console.log(config,serviceMap)
           const _serverConfig = {config,serviceMap};
           if(config) {
