@@ -2,11 +2,14 @@ import React from "react";
 import { useBetween } from "use-between";
 
 import useSocketState from "../../../shared/useSocketState";
+import useSocketClient from "../../../shared/useSocketClient";
 const useSharedSocketState = () => useBetween(useSocketState);
+const useSharedSocketClient = () => useBetween(useSocketClient)
+
 let dontRunTwice = 1;
 export default function SocketClientInfo(){
     const {socketConnected} = useSharedSocketState();
-        
+    const {socketClient} = useSharedSocketClient();    
     return(
         <>
         <div className="col-xl-4 col-md-6 mt-2">
@@ -23,6 +26,7 @@ export default function SocketClientInfo(){
                                 : (<i style={{fontSize:"2em",color:"red"}} className="fas fa-toggle-off"></i>)
                         }
                     </div>
+                    <div>{socketClient.id}</div>
                 </div>
             </div>
         </div>

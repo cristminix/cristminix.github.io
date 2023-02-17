@@ -48,28 +48,12 @@ export default function SysInfo(){
     } 
     useEffect(() => {
         updateSysInfo()
-        const timer = setInterval(()=>{
-            updateSysInfo();
-
-        },5000);
-
-        return () => {
-            clearInterval(timer);
-        }
-    }, [serverEndpoint]);
+    }, [serverCfg]);
 
     useEffect(()=>{
-        updateOsInfo()
-
-        const timer = setInterval(()=>{
-            updateOsInfo()
-            
-        },15000*2);
-
-        return () => {
-            clearInterval(timer);
-        }
-    }, [serverEndpoint]);
+        setTimeout(()=>updateOsInfo(),5000);
+        
+    }, [serverCfg]);
     
     let diskSize=0,diskFree=0,diskUsage=0,diskPctg,diskFs="";
 
@@ -83,7 +67,7 @@ export default function SysInfo(){
     }catch(e){}
 
     let memSize,memFree,memPctg;
-    
+
     try{
         memSize = mem.MemTotal;
         memFree = mem.MemFree;

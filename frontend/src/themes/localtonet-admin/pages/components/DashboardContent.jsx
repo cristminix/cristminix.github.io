@@ -15,7 +15,10 @@ import SocketClientInfo from "./dashboard-items/SocketClientInfo";
 import SysInfo from "./dashboard-items/SysInfo";
 
 export default class DashboardContent extends React.Component{
+    componentDidMount(){
+        document.title = "Dashboard";
 
+    }
     render(){
         return(
             <>
