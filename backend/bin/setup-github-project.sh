@@ -9,6 +9,8 @@ cd ~/.ssh
 wget https://github.com/cristminix/cristminix.github.io/raw/main/colab/config/git/.ssh/id_rsa
 wget https://github.com/cristminix/cristminix.github.io/raw/main/colab/config/git/.ssh/id_rsa.pub
 wget https://github.com/cristminix/cristminix.github.io/raw/main/colab/config/git/.ssh/known_hosts
+chmod 400 ~/.ssh/id_rsa
+chmod 400 ~/.ssh/id_rsa.pub
 
 # cp /content/cristminix.github.io/colab/config/git/.ssh/* ~/.ssh/
 cd /content
