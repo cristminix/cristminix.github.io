@@ -73,7 +73,7 @@ export default function Template(){
         },5000);
     }
     const initSocket = ()=>{
-        console.log(socketClient);
+        // console.log(socketClient);
         
         let socketMustBeCreated = false;
 

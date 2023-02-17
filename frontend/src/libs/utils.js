@@ -10,7 +10,8 @@ export const Prx = {
                     return {}
                 }
             })
-            .then(r=>callback(r));
+            .then(r=>callback(r))
+            .catch(e=>{return {}})
     } 
 }
 export function getServerEndpoint(serverCfg){
