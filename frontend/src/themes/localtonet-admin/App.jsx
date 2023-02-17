@@ -22,7 +22,9 @@ import TemplateLogin  from "./templates/login/TemplateLogin";
 function App(){
     const {isLogedIn,setIsLogedIn} = useSharedSessionState();
     let TemplateApp;
-    setIsLogedIn(localStorage['isLogedIn'])
+    setIsLogedIn(localStorage['isLogedIn']);
+
+    
     if(isLogedIn == "true"){
         TemplateApp = Template
     }else{

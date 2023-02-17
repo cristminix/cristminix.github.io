@@ -1,16 +1,34 @@
+export const Prx = {
+    
+
+    getJson : (url,callback)=>{
+        fetch(url,{headers:{'ngrok-skip-browser-warning':1}})
+            .then(r=>{
+                try{
+                    return r.json()
+                }catch(e){
+                    return {}
+                }
+            })
+            .then(r=>callback(r));
+    } 
+}
 export function getServerEndpoint(serverCfg){
+    // console.log(serverCfg.service_map)
     let url = "";
     try{
-        if(serverCfg.serviceMap.backend == "bore"){
+        if(serverCfg.service_map.backend == "bore"){
             url = `http://bore.pub:${serverCfg.config.bore_port}`;
         }
-        else if(serverCfg.serviceMap.backend == "ngrok"){
+        else if(serverCfg.service_map.backend == "ngrok"){
             url = `${serverCfg.config.ngrok_url}`;
         }
-        else if(serverCfg.serviceMap.backend == "localtonet"){
+        else if(serverCfg.service_map.backend == "localtonet"){
             url = `https://${serverCfg.config.localtonet_host}`;
         }
-    }catch(e){}
+    }catch(e){
+        // console.log(e)
+    }
     return url;
 }
 export function formatBytes(bytes, incBytes=0,decimals = 2) {

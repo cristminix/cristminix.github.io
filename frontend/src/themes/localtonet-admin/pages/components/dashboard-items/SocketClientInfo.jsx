@@ -1,8 +1,7 @@
 import React from "react";
 import { useBetween } from "use-between";
 
-// import socketClient from "../../../../../libs/socketClient";
-import useSocketState from "./useSocketState";
+import useSocketState from "../../../shared/useSocketState";
 const useSharedSocketState = () => useBetween(useSocketState);
 let dontRunTwice = 1;
 export default function SocketClientInfo(){

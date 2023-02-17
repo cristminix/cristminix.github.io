@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from "react";
 import { useBetween } from "use-between";
-import { getServerEndpoint,formatBytes } from "../../../../../libs/utils";
-import useServerCfgState from "./useServerCfgState";
+import { Prx, getServerEndpoint,formatBytes } from "../../../../../libs/utils";
+import useServerCfgState from "../../../shared/useServerCfgState";
 const useSharedServerCfgState = () => useBetween(useServerCfgState);
 import AppleSvgIcon from "../svg-icons/AppleSvgIcon";
 import UbuntuSvgIcon from "../svg-icons/UbuntuSvgIcon";
@@ -19,7 +19,7 @@ const osIcons = {
     centos : LinuxSvgIcon
 }
 export default function SysInfo(){
-    const {serverCfg,setServerCfg} = useSharedServerCfgState();
+    const {serverCfg} = useSharedServerCfgState();
 
     const [uptime,setUptime] = useState("");
     const [du,setDu] = useState("");
@@ -27,75 +27,25 @@ export default function SysInfo(){
     const [cpu,setCpu] = useState("");
     const [osInfo,setOsInfo] = useState("");
    
-    let serverEndpoint;
-    serverEndpoint = getServerEndpoint(serverCfg);
-    function updateDiskInfo(){
-        fetch(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=disk`,{headers:{'ngrok-skip-browser-warning':1}})
-            .then(r=>{
-                try{
-                    return r.json()
-                }catch(e){
-                    return {}
-                }
-            })
-            .then(r=>setDu(r));
-    }
-    function updateOsInfo(){
-         if(!serverEndpoint){
-            return;
+    let serverEndpoint = getServerEndpoint(serverCfg);
+    const fetchData = (url,callback)=>{
+        if(serverEndpoint){
+            Prx.getJson(url,callback);
         }
-        fetch(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=os`,{headers:{'ngrok-skip-browser-warning':1}})
-            .then(r=>{
-                try{
-                    return r.json()
-                }catch(e){
-                    return {}
-                }
-            })
-            .then(r=>setOsInfo(r));
     }
-    function updateCpuInfo(){
-        fetch(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=cpu`,{headers:{'ngrok-skip-browser-warning':1}})
-            .then(r=>{
-                try{
-                    return r.json()
-                }catch(e){
-                    return {}
-                }
-            })
-            .then(r=>setCpu(r));
-    }
-    function updateMemInfo(){
-        fetch(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=mem`,{headers:{'ngrok-skip-browser-warning':1}})
-            .then(r=>{
-                try{
-                    return r.json()
-                }catch(e){
-                    return {}
-                }
-            })
-            .then(r=>setMem(r));
-    }
-    function updateUptime(){
-        fetch(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=uptime`,{headers:{'ngrok-skip-browser-warning':1}})
-            .then(r=>{
-                try{
-                    return r.json()
-                }catch(e){
-                    return {}
-                }
-            })
-            .then(r=>setUptime(r));
-    }
-    function updateSysInfo(){
-        if(!serverEndpoint){
-            return;
-        }
+   
+    const updateDiskInfo = () => fetchData(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=disk`,r=>setDu(r));
+    const updateOsInfo = () => fetchData(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=os`,r=>setOsInfo(r))
+    const updateCpuInfo = () => fetchData(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=cpu`,r=>setCpu(r))
+    const updateMemInfo = () => fetchData(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=mem`,r=>setMem(r))
+    const updateUptime = () => fetchData(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=uptime`,r=>setUptime(r))
+
+    const updateSysInfo = () => {
         updateDiskInfo()
         updateMemInfo()
         updateCpuInfo()
         updateUptime()
-    }
+    } 
     useEffect(() => {
         updateSysInfo()
         const timer = setInterval(()=>{
@@ -122,6 +72,7 @@ export default function SysInfo(){
     }, [serverEndpoint]);
     
     let diskSize=0,diskFree=0,diskUsage=0,diskPctg,diskFs="";
+
     try{
         const data = du[0];
         diskFs = data["Filesystem"];
@@ -132,6 +83,7 @@ export default function SysInfo(){
     }catch(e){}
 
     let memSize,memFree,memPctg;
+    
     try{
         memSize = mem.MemTotal;
         memFree = mem.MemFree;

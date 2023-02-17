@@ -6,7 +6,7 @@ import HistorySvgIcon from "./svg-icons/HistorySvgIcon";
 import MySubcriptionSvgIcon from "./svg-icons/MySubscriptionSvgIcon";
 import MyTokenSvgIcon from "./svg-icons/MyTokenSvgIcon";
 import MyTunnelSvgIcon from "./svg-icons/MyTunnelSvgIcon";
-
+import { Link } from 'react-router-dom';
 const icons = {
     dashboard : DashboardSvgIcon,
     browsePlan : BrowsePlanSvgIcon,
@@ -61,11 +61,11 @@ export default function MenuItem(props){
     return (
         <>
         <div className="menu-item">
-            <a className="menu-link" href={link}>
+            <Link className="menu-link" to={link}>
                 {bulletTag}
                 {iconTag}
                 <span className="menu-title">{caption}</span>
-            </a>
+            </Link>
         </div>
         {arrow}
         </>
