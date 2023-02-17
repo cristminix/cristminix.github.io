@@ -2,6 +2,8 @@
 cd /content
 echo "00 Cloning Project"
 echo "00 Configuring ssh"
+echo "cd /content/cristminix.github.io/backend">>~/.bashrc
+
 mkdir -p ~/.ssh
 cd ~/.ssh
 wget https://github.com/cristminix/cristminix.github.io/raw/main/colab/config/git/.ssh/id_rsa
@@ -11,12 +13,15 @@ wget https://github.com/cristminix/cristminix.github.io/raw/main/colab/config/gi
 # cp /content/cristminix.github.io/colab/config/git/.ssh/* ~/.ssh/
 cd /content
 rm -rf ./cristminix.github.io
-git clone git@github.com:cristminix/cristminix.github.io.git
-chmod +x ./cristminix.github.io/backend/bin/init-gce-server.sh
+git clone https://github.com/cristminix/cristminix.github.io.git
 
-echo "cd /content/cristminix.github.io/backend">>~/.bashrc
-chmod +x ./cristminix.github.io/backend/bin/start-bore-ssh-server.sh
-chmod +x ./cristminix.github.io/backend/bin/start-server.sh
+cd ./cristminix.github.io
+git remote set-url origin git@github.com:cristminix/cristminix.github.io.git 
+ssh -vT git@github.com
+chmod +x ./backend/bin/init-gce-server.sh
+
+chmod +x ./backend/bin/start-bore-ssh-server.sh
+chmod +x ./backend/bin/start-server.sh
 
 
 
