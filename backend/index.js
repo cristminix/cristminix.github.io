@@ -8,6 +8,7 @@ const studentRoutes = require('./routes/student-routes');
 const serverConfigRoutes = require('./routes/server-config-routes');
 const sysinfoRoutes = require("./routes/sysinfo-routes");
 const proxyRoutes = require("./routes/proxy-routes");
+const serviceRoutes = require("./routes/service-routes");
 const { Server } = require("socket.io");
 const { createServer } = require("http");
 const fs = require("fs");
@@ -42,6 +43,7 @@ async function cpuData() {
     }
 }
 app.use('/', proxyRoutes.routes);
+app.use('/api', serviceRoutes.routes);
 app.use('/api', studentRoutes.routes);
 app.use('/api', serverConfigRoutes.routes);
 app.use('/api', sysinfoRoutes.routes);

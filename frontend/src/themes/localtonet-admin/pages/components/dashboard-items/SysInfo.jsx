@@ -41,6 +41,9 @@ export default function SysInfo(){
             .then(r=>setDu(r));
     }
     function updateOsInfo(){
+         if(!serverEndpoint){
+            return;
+        }
         fetch(`${serverEndpoint}/api/sysinfo/getBasicInfo?t=os`,{headers:{'ngrok-skip-browser-warning':1}})
             .then(r=>{
                 try{
@@ -84,13 +87,19 @@ export default function SysInfo(){
             })
             .then(r=>setUptime(r));
     }
+    function updateSysInfo(){
+        if(!serverEndpoint){
+            return;
+        }
+        updateDiskInfo()
+        updateMemInfo()
+        updateCpuInfo()
+        updateUptime()
+    }
     useEffect(() => {
-
+        updateSysInfo()
         const timer = setInterval(()=>{
-            updateDiskInfo()
-            updateMemInfo()
-            updateCpuInfo()
-            updateUptime()
+            updateSysInfo();
 
         },5000);
 
@@ -212,7 +221,7 @@ export default function SysInfo(){
                 
                 <div className="row mb-1">
                     <div className="max-w-7xl mx-auto grid grid-cols-12 ">
-                         <div className="col-span-2 row-span-2 text-center pt-0"><i className={`fas fa-hourglass-2`} style={{fontSize:"1em"}}></i></div>
+                         <div className="col-span-2 row-span-2 text-center pt-0"><i className={`fas fa-hourglass fa-spin`} style={{fontSize:"1em"}}></i></div>
                          <div className="col-span-10">
                             <div>UP {uptime.ut_hour} hr {uptime.ut_min} min {uptime.ut_sec} sec</div>
 
