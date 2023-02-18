@@ -26,14 +26,7 @@ export default function HeaderContent(props){
         </div>
         <div className="d-flex align-items-center flex-shrink-0">
             <div className="d-flex align-items-center ms-3 ms-lg-4">
-                <a href="#" className="btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline w-40px h-40px" data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                    <span className="svg-icon theme-light-show svg-icon-2">
-                        <LightSvgIcon viewBox="0 0 24 24"/>
-                    </span>
-                    <span className="svg-icon theme-dark-show svg-icon-2">
-                        <DarkSvgIcon viewBox="0 0 24 24"/>
-                    </span>
-                </a>
+                
                 <ThemeMenuMode/>
             </div>
         </div>

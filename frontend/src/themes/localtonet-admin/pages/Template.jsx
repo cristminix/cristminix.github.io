@@ -4,6 +4,9 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Aside from "./components/Aside"
 import DashboardContent from "./components/DashboardContent";
 import ServicesContent from "./components/ServicesContent";
+import TailwindContentMasonry from "./components/TailwindContentMasonry";
+import TailwindContentScrollSnap from "./components/TailwindContentScrollSnap";
+
 import { getServerEndpoint } from "../../../libs/utils";
 import { getTunnelConfig } from "../../../libs/supabaseDb";
 import { io } from "socket.io-client";
@@ -98,14 +101,16 @@ export default function Template(){
 
     }
     useEffect(() => {
+        // getServerConfig().then(dummy=>{});
+
         const timer = setInterval(()=>{
             getServerConfig().then(dummy=>{});
-        },5000);
+        },10000);
 
         return () => {
             clearInterval(timer);
         }
-    }, [serverCfg,socket,socketClient]);
+    }, [serverCfg]);
 
         return(
 <>
@@ -116,6 +121,8 @@ export default function Template(){
                 <Route exac path="/" element={<DashboardContent/>}></Route>
                 <Route exac path="/dashboard" element={<DashboardContent/>}></Route>
                 <Route exac path="/services" element={<ServicesContent/>}></Route>
+                <Route exac path="/tailwind/masonry" element={<TailwindContentMasonry/>}></Route>
+                <Route exac path="/tailwind/scroll-snap" element={<TailwindContentScrollSnap/>}></Route>
             </Routes>
             
         </Router>

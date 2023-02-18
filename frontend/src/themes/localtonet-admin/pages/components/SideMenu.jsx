@@ -16,15 +16,17 @@ export default class SideMenu extends React.Component{
         <div className="menu menu-column menu-rounded menu-sub-indention menu-active-bg fw-semibold" id="#kt_aside_menu" data-kt-menu="true">
             <MenuItem link="/dashboard" caption="Dashboard" icon="dashboard"/>
             <MenuItem link="/services" caption="Services" icon="subscription"/>
-            {/* <div data-kt-menu-trigger="click" className="menu-item menu-accordion">
-                <MenuItem hasChild={true} caption="My Tunnels" icon="tunnel"/>
-                <div className="menu-sub menu-sub-accordion not-show">
-                    <MenuItem bullet={true} link="#tunnel/http" caption="HTTP"/>
-                    <MenuItem bullet={true} link="#tunnel/tcpudp" caption="TCP - UDP"/>
+             <div data-kt-menu-trigger="click" className="menu-item menu-accordion">
+                <MenuItem hasChild={true} caption="Tailwind" icon="tailwind"/>
+                <div className="menu-sub menu-sub-accordion show">
+                    <MenuItem bullet={true} link="/tailwind/masonry" caption="Masonry"/>
+                    <MenuItem bullet={true} link="/tailwind/scroll-snap" caption="Scroll Snap"/>
+                    {/* <MenuItem bullet={true} link="#tunnel/tcpudp" caption="TCP - UDP"/>
                     <MenuItem bullet={true} link="#tunnel/fileserver" caption="File Server"/>
-                    <MenuItem bullet={true} link="#tunnel/proxyserver" caption="Proxy Server"/>
+                    <MenuItem bullet={true} link="#tunnel/proxyserver" caption="Proxy Server"/> */}
                 </div>
             </div>
+            {/*
             <MenuItem link="#subscription/usersubscriptions" icon="subscription" caption="My Subscription"/>
             <MenuItem link="#usertoken" icon="token" caption="My Token"/>
             <MenuItem link="#subscription" icon="browsePlan" caption="Browse Plan"/>

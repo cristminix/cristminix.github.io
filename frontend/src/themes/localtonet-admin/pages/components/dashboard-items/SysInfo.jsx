@@ -103,7 +103,7 @@ export default function SysInfo(){
                 <div className="row">
                     <span className="text-muted mb-3 d-block text-truncate">System Info</span>
                 </div>
-                <div className="row mb-1">
+                {osInfo?(<div className="row mb-1">
                     <div className="max-w-7xl mx-auto grid grid-cols-12 ">
                          <div className="col-span-2 row-span-2 text-center pt-0">{osSvgIcon}</div>
                          <div className="col-span-10">
@@ -113,9 +113,10 @@ export default function SysInfo(){
 
                         </div> 
                    </div>
-                </div>
+                </div>):""}
+                
 
-                <div className="row mb-1">
+                {cpu?(<div className="row mb-1">
                     <div className="max-w-7xl mx-auto grid grid-cols-12 ">
                          <div className="col-span-2 row-span-2 text-center pt-0"><i className="fas fa-microchip" style={{fontSize:"1em"}}></i></div>
                          <div className="col-span-10">
@@ -127,8 +128,8 @@ export default function SysInfo(){
 
                         </div> 
                    </div>
-                </div>
-                <div className="row mb-1">
+                </div>):""}
+                {mem?(<div className="row mb-1">
                     <div className="max-w-7xl mx-auto grid grid-cols-12 ">
                          <div className="col-span-2 row-span-2 text-center pt-0"><i className="fas fa-memory" style={{fontSize:"1em"}}></i></div>
                          <div className="col-span-10">
@@ -140,8 +141,8 @@ export default function SysInfo(){
 
                         </div> 
                    </div>
-                </div>
-                <div className="row">
+                </div>):""}
+                {du?(<div className="row">
                     <div className="max-w-7xl mx-auto grid grid-cols-12 ">
                          <div className="col-span-2 row-span-2 text-center pt-0"><i className="fas fa-hdd" style={{fontSize:"1em"}}></i></div>
                          <div className="col-span-10">
@@ -153,9 +154,9 @@ export default function SysInfo(){
 
                         </div> 
                    </div>
-                </div>
+                </div>):""}
                 
-                <div className="row mb-1">
+                {uptime?(<div className="row mb-1">
                     <div className="max-w-7xl mx-auto grid grid-cols-12 ">
                          <div className="col-span-2 row-span-2 text-center pt-0"><i className={`fas fa-hourglass fa-spin`} style={{fontSize:"1em"}}></i></div>
                          <div className="col-span-10">
@@ -163,7 +164,7 @@ export default function SysInfo(){
 
                         </div> 
                    </div>
-                </div>
+                </div>):""}
             </div>
         </div>
     </div>

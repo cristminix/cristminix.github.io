@@ -6,6 +6,7 @@ import HistorySvgIcon from "./svg-icons/HistorySvgIcon";
 import MySubcriptionSvgIcon from "./svg-icons/MySubscriptionSvgIcon";
 import MyTokenSvgIcon from "./svg-icons/MyTokenSvgIcon";
 import MyTunnelSvgIcon from "./svg-icons/MyTunnelSvgIcon";
+import TailwindSvgIcon from "./svg-icons/TailwindSvgIcon";
 import { Link } from 'react-router-dom';
 const icons = {
     dashboard : DashboardSvgIcon,
@@ -13,7 +14,8 @@ const icons = {
     history : HistorySvgIcon,
     subscription : MySubcriptionSvgIcon,
     token : MyTokenSvgIcon,
-    tunnel : MyTunnelSvgIcon
+    tunnel : MyTunnelSvgIcon,
+    tailwind : TailwindSvgIcon
 } 
 
 export default function MenuItem(props){

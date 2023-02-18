@@ -26,7 +26,6 @@ export default function SocketClientInfo(){
                                 : (<i style={{fontSize:"2em",color:"red"}} className="fas fa-toggle-off"></i>)
                         }
                     </div>
-                    <div>{socketClient.id}</div>
                 </div>
             </div>
         </div>
