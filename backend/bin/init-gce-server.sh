@@ -13,7 +13,8 @@ apt install nano
 # 00
 echo "00 Setup Dropbear"
 bash "$SCRIPT_DIR/setup-dropbear.sh"
-
+echo "00 Setup openssh server"
+bash "$SCRIPT_DIR/setup-openssh-server.sh"
 # 01
 echo "01 Setup Passwd"
 bash "$SCRIPT_DIR/setup-passwd.sh"
