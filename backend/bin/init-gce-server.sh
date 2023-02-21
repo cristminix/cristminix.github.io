@@ -31,7 +31,8 @@ bash "$SCRIPT_DIR/setup-ngrok.sh"
 # 05
 echo "05 Setup localtonet"
 bash "$SCRIPT_DIR/setup-localtonet.sh"
-
+echo "05 Setup gotty"
+bash "$SCRIPT_DIR/setup-gotty.sh"
 # 06
 echo "00 Setup node"
 bash "$SCRIPT_DIR/setup-node.sh"

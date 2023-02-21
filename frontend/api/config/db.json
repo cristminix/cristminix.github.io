@@ -1,0 +1,23 @@
+{
+	"connection_available" : {
+		"default" : {
+			"type" : "json",
+			"path" : "storage/db.json"
+		}
+	},
+	"connection_enabled" : "default",
+	"fixtures" : {
+		"cluster" : [
+			
+		],
+		"tunnel" : [
+			
+		],
+		"registry" : [
+			
+		],
+		"user" : [
+			
+		]
+	}
+}

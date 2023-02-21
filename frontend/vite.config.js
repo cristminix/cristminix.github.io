@@ -2,12 +2,19 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import mix from 'vite-plugin-mix'
 
-export default defineConfig({
-  plugins: [
-    mix.default({
+const {NODE_ENV} = process.env;
+
+const plugins = [
+  react()
+]
+
+if(NODE_ENV=="development"){
+  plugins.push(mix.default({
       handler: './api/index.cjs',
-    }),
-    react()],
+  }))
+}
+export default defineConfig({
+  plugins,
   server:{
     port:3000
   },
