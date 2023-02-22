@@ -18,7 +18,8 @@ rm -rf ./cristminix.github.io
 git clone https://github.com/cristminix/cristminix.github.io.git
 
 cd ./cristminix.github.io
-git remote set-url origin git@github.com:cristminix/cristminix.github.io.git 
+git remote set-url origin git@github.com:cristminix/colab_client.git
+git@github.com:cristminix/cristminix.github.io.git 
 ssh -vT git@github.com
 chmod +x ./backend/bin/init-gce-server.sh
 

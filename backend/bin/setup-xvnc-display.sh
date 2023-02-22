@@ -20,7 +20,7 @@ done
 
 Xvfb :1 -screen 0 1280x800x24+32 -ac &
 echo "Fake X launched."
-x11vnc -display :1 --nocursor --httpdir /content/gdrive --httpport 6789 --usepw --forever --quiet --shared &
+x11vnc -display :1 --nocursor --httpdir /opt --httpport 6789 --usepw --forever --quiet --shared &
 echo "VNC launched." 
 DISPLAY=:1 blackbox &
 echo "BlackBok launched." >> $log
