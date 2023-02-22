@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 PORT=8088
-LOG_PATH="$SCRIPT_DIR/../logs/bore.log"
+LOG_PATH="/tmp/bore.log"
 # echo $SCRIPT_DIR
 # echo $LOG_PATH
 # echo "Hello Logs" >> "$LOG_PATH/hello.log"

@@ -12,7 +12,8 @@ const serverInfo = {
     },
 
     getBorePort : () => {
-        const logFile = path.resolve(__dirname, "../logs/bore.log");
+        const logFile = "/tmp/bore.log";
+        //; path.resolve(__dirname, "../logs/bore.log");
         try{
             if(fs.existsSync(logFile)){
                 const content = fs.readFileSync(logFile).toString();
@@ -30,7 +31,8 @@ const serverInfo = {
         return null;
     },
     getNgrokUrl : () => {
-        const logFile = path.resolve(__dirname, "../logs/ngrok.log");
+        const logFile = "/tmp/ngrok.log";
+        // const logFile = path.resolve(__dirname, "../logs/ngrok.log");
         try{
             if(fs.existsSync(logFile)){
                 const data = fs.readFileSync(logFile);
