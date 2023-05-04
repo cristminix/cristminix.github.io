@@ -1,11 +1,10 @@
-apt install p7zip-full p7zip-rar
-apt install default-jre
 # oracle-java7-installer
 # sudo add-apt-repository ppa:webupd8team/java
 # sudo apt-get update
-apt install xvfb x11vnc blackbox xterm
-apt install tightvnc-java
-apt install tightvncserver
+apt install p7zip-full p7zip-rar
+apt install default-jre
+
+apt install xvfb x11vnc blackbox xterm  tightvnc-java tightvncserver
 
 x11vnc -storepasswd
 
