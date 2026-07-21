@@ -1,3 +1,43 @@
-theme: jekyll-theme-minimal
-title: "Dokumentasi MedusaJS"
-description: "Panduan dan dokumentasi untuk menjalankan MedusaJS API Reference"
+remote_theme: just-the-docs/just-the-docs
+title: "Dokumentasi Penting"
+description: "Panduan dan dokumentasi untuk proyek penting"
+url: "https://cristminix.github.io"
+baseurl: ""
+favicon_ico: "https://favicons.githubusercontent.com/cristminix.github.io"
+
+# Search
+search_enabled: true
+search:
+  heading_level: 3
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  tokenizer_separator: /[\s/]+/
+  rel_url: true
+  button: false
+
+# Aux links
+aux_links:
+  "GitHub":
+    - "https://github.com/cristminix/cristminix.github.io"
+
+# Color scheme
+color_scheme: light
+
+# Callouts
+callouts:
+  warning:
+    title: Warning
+    color: yellow
+  note:
+    title: Note
+    color: purple
+  tip:
+    title: Tip
+    color: green
+
+# Footer
+footer_content: "Copyright &copy; 2026."
+
+# Heading anchor
+heading_anchors: true

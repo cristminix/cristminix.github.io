@@ -1,6 +1,9 @@
 ---
 title: Menjalankan API Reference
 layout: default
+nav_order: 2
+parent: MedusaJS
+description: "Cara menjalankan dokumentasi API Reference MedusaJS"
 ---
 
 # Menjalankan API Reference MedusaJS
