@@ -1,1 +1,0 @@
-If somebody has the same problem, it can be fixed by replacing "/dev/shm" with, for example, "/dev/uml" in /arch/um/os-Linux/mem.c and running "sudo mkdir /dev/uml && sudo chmod 777 /dev/uml" in container before starting usermode linux
