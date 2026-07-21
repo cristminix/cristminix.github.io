@@ -1,3 +1,8 @@
+---
+title: Menjalankan API Reference
+layout: default
+---
+
 # Menjalankan API Reference MedusaJS
 
 Dokumen ini menjelaskan cara menjalankan dokumentasi API Reference MedusaJS yang berada di `www/apps/api-reference/`.
