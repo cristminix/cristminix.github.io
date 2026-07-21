@@ -14,3 +14,4 @@ Dokumentasi dan panduan untuk proyek MedusaJS.
 
 - Menjalankan API Reference
 - Membangun dan Menjalankan Dokumentasi
+- Memperbaiki Route Markdown 404
