@@ -13,3 +13,4 @@ Dokumentasi dan panduan untuk proyek MedusaJS.
 ## Daftar Halaman
 
 - Menjalankan API Reference
+- Membangun dan Menjalankan Dokumentasi
