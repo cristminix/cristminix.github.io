@@ -110,6 +110,93 @@ NEXT_PUBLIC_POSTHOG_HOST=http://localhost:3003
 yarn workspace resources build
 ```
 
+### 4. Fix Juga di Book App
+
+**File:** `apps/book/utils/fetch-raw-mdx.ts`
+
+Book app punya masalah yang sama persis. Bedanya, ia menggunakan fungsi `fetchRawMdx` yang mengecek dua file: `_md-content.mdx` (override) dan `page.mdx`. Fix dilakukan dengan membungkus logika fetch ke helper `tryFetchWithFallback`:
+
+```typescript
+async function tryFetchWithFallback(filename: string): Promise<string | null> {
+  const result = await workerCompatibleFetch<string | null>({
+    url: `${origin}/raw-mdx/${[...slug, filename].join("/")}`,
+    responseTransformer: async (res) => res.ok ? res.text() : null,
+    fallbackAction: async () => null,
+    useRemote: isCloudflare,
+  })
+
+  if (result !== null) return result
+
+  try {
+    const { promises: fs } = await import("fs")
+    return await fs.readFile(
+      path.join(process.cwd(), "app", ...slug, filename), "utf-8"
+    )
+  } catch {
+    return null
+  }
+}
+```
+
+### 5. Fix Juga di UI App
+
+**File:** `apps/ui/app/md-content/[[...slug]]/route.ts`
+
+UI app punya pola yang sama dengan resources dan book. Route handler-nya langsung memanggil `workerCompatibleFetch` tanpa helper. Fix dengan menambahkan fallback manual setelah fetch gagal:
+
+```typescript
+let fileContent = await workerCompatibleFetch<string | null>({
+  url: `${origin}${basePath}/raw-mdx/${[...slug, "page.mdx"].join("/")}`,
+  responseTransformer: async (res) => res.ok ? res.text() : null,
+  fallbackAction: async () => null,
+  useRemote: isCloudflare,
+})
+
+if (fileContent === null) {
+  try {
+    const { promises: fs } = await import("fs")
+    fileContent = await fs.readFile(
+      path.join(process.cwd(), "app", ...slug, "page.mdx"), "utf-8"
+    )
+  } catch {
+    // fallback failed
+  }
+}
+```
+
+Tidak lupa membuat file `.env` (copy dari `.env.example`) dengan PostHog key dummy dan `BASE_URL` yang sesuai.
+
+### 6. Fix Juga di User Guide App
+
+**File:** `apps/user-guide/app/md-content/[[...slug]]/route.ts`
+
+Pola yang sama persis dengan UI app — `workerCompatibleFetch` langsung di route handler dengan fallback yang tidak pernah kepanggil. Fix identik dengan UI app.
+
+### 7. Fix Juga di Bloom/Cloud App
+
+**File:** `apps/bloom/app/md-content/[[...slug]]/route.ts`
+
+Pola yang sama. Bloom adalah nama package untuk app cloud. Base path-nya `/cloud`. Fix identik.
+
+## Hasil Test
+
+Setelah fix, semua route markdown di kelima app berfungsi normal (HTTP 200):
+
+| App | Port | Halaman Biasa | `.html.md` | `.md` |
+|-----|------|:------------:|:----------:|:----:|
+| **resources** | 3003 | ✅ | ✅ | ✅ |
+| **book** | 3001 | ✅ | ✅ | ✅ |
+| **ui** | 3002 | ✅ | ✅ | ✅ |
+| **user-guide** | 3004 | ✅ | ✅ | ✅ |
+| **bloom** | 3005 | `/cloud` | ✅ | ✅ | ✅ |
+| **cloud** | 3006 | `/cloud` | ✅ | ✅ | ✅ |
+
+Ada error PostHog yang tidak fatal (hanya telemetry logging):
+```
+Error [PostHogFetchHttpError]: HTTP error while fetching PostHog: status=404
+```
+Ini karena tidak ada PostHog server lokal — response tetap terkirim dengan benar.
+
 ## Catatan
 
 - `workerCompatibleFetch` didesain untuk Cloudflare Workers (tidak bisa `fs.readFile`). Di lingkungan local/production biasa, ia harusnya pakai `fallbackAction` — tapi karena URL selalu `http://`, ia selalu fetch.
